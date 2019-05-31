@@ -1,0 +1,1281 @@
+// For compatibility with MS Notepad, set tabs to every 8 char.
+
+// Set major run control parameters (0=False=No, 1=True=Yes)
+isCC=0				// set CC mode (otherwise VC)
+isInteractive=1 		// run interactive vs in batch
+runStim=0			// run the synaptic stimulation simulation
+
+// Load the Neuron machinery
+if (isInteractive) {
+	load_file("nrngui.hoc")
+} else {
+	load_file("stdrun.hoc")
+}
+cvode.active(1) 		// use an adaptive method
+
+
+// The following are set before this hoc file is invoked.
+// Values shown are examples only.
+
+// Define an orientation vector for locating layers.
+// These component must be unit length and have
+// point in the apical direction of the reoriented
+// y coordinate for the cell.
+
+// orientX=0			// No real orientation
+// orientY=1			// so the unit vector is
+// orientZ=0			// just the y axis direction.
+
+// Locate the (reoriented) boundaries between layers
+// PPy3d=350			// Minimum y-coord value for PP (PP-SR boundary)
+// SRy3d=100			// Minimum Y-coord value for SR (SR-SL boundary)
+// SOy3d=0			// Maximum y-coord value for SO
+
+
+// Define input and output files (examples only)
+// strdef cell			// hoc file with cell geometry
+// strdef outPath		// Synaptic responses file name
+// strdef avgPath		// Overall average response file name
+// cell="bar-cell1zr.CNG.hoc"	// Cell geometry file
+// outPath="out-temp.txt"	// Synaptic responses output file
+
+// Provide the path for the common axon segment definition
+strdef axonPath
+axonPath="axon-common.hoc"
+
+// Set a default path for saved response data vectors
+strdef savePath
+savePath="savedsynresp.csv"
+
+
+// Simulation parameters -----------------------------
+
+addChannels=0			// Add active channels to the cell
+useHemond2008=0			// Use conductances from the Hemond et al., 2008 model.
+useSpine=0			// Use a spine for synapses in SR and SO
+maxSegLen=10			// Maximum segment length in microns
+
+tError=1000 			// Maximum time after init before error declared (see runIt)
+tInit=2000			// Initialization time to reach equilibrium
+tCont=50			// Continue time (must be greater than time to peak)
+tDelta=0.1			// Time step size for response simulation and averaging
+randSeed=19720107		// Random number generator seed value
+maxSecnum=1000			// maximum section number (see findLayer and onPPtrunk)
+
+useAMPAR=1			// Run for AMPAR synapses (ie AMPAR not blocked)
+useNMDAR=0			// Run for NMDAR synapses (ie NMDAR not blocked)
+
+fastAMPAR=0			// use RC AMPAR synapse settings with same kinetics as PP
+randomizeSyn=0			// make random variations to synaptic properties
+
+maxDendDiam=5			// Maximum dendrite diameter (otherwise soma)
+
+Vrest = -61 			// Starting resting potential everywhere
+// Vrest = -61 - 13.6 		// Starting resting potential using LJP from Hemond et al.
+// Vrest = -71 			// Starting resting potential shifted by 10 mV
+
+
+celsius = 32.0			// Temperature (needed for active channels)
+synErev = 0 			// Synaptic reversal potential (AMPAR and NMDAR)
+lowExtMg = 50e-3		// External [Mg++] (mM) for low-Mg experiments
+highExtMg = 1			// External [Mg++] (mM) for normal Mg experiments
+
+VCvm = -80			// Voltage clamp potential at soma
+CCvm = -60			// Current clamp holding potential - as per model paper predictions
+// CCvm = -80			// Current clamp holding potential - more or less per experiments
+
+// PP synapse parameters for AMPAR responses.
+// Generally these are similar to values found in MF terminals
+// and SC synapses in CA1 measured near the synapse. 
+ppAMPARSynTau1=0.4		// PP synaptic rising time constant
+ppAMPARSynTau2=4.1		// PP synaptic falling time constant
+ppAMPARSynWeight=0.9		// PP synapse gmax in nS
+ppAMPARSynTsd=0.0		// PP synapse tau2 log-normal sd param
+ppAMPARSynWsd=0.2		// PP synapse weight log-normal sd param
+
+// RC synapse parameters for AMPAR responses.
+// These values are similar to values from Williams & Johnston 1991.
+// The slower kinetics may result from combined AMPA/KA synapses,
+// from reduced neurotransmitter concentration in the cleft,
+// or even from multi-quantal release, all of which are hypothetical.
+rcAMPARSynTau1=3.3		// RC synaptic rising time constant
+rcAMPARSynTau2=3.3		// RC synaptic falling time constant
+rcAMPARSynWeight=0.5		// RC synapse gmax in nS
+rcAMPARSynTsd=0.0		// RC synapse tau2 log-normal sd param
+rcAMPARSynWsd=0.4		// RC synapse weight log-normal sd param
+
+if (fastAMPAR) {
+	// Set RC AMPAR time constants to match fastest experimental pVC response
+	// rcAMPARSynTau1=1.3
+	// rcAMPARSynTau2=5.3
+
+	// Set RC AMPAR to match PP AMPAR or other faster AMPAR model
+	rcAMPARSynTau1=0.4
+	rcAMPARSynTau2=4.1
+}
+
+
+// PP and RC synapse parameters for NMDAR responses.
+// This is pure data fitting. The values are somewhat
+// in line with Vicini et al. 1998 for HEK transfection,
+// but there should be a larger correction for temperature.
+// See also Dalby and Mody 2003 for NR2A in DG (similar).
+// See Chen et al., 2001 Mol Pharamcol 59: 212-219 for one
+// of the few (or only) experimental studies to consider 
+// both NMDAR subtypes and temperature effects together.
+// Mean NMDAR experimental values from Chen et al. are 
+// 2.4 ms and 35 ms at 37 deg-C in outside-out patches. 
+// For the parameters below, 10%-90% rise time is 4.7 ms while
+// 90%-10% decay time is 37.9 ms. There is no good reason to
+// assume the same gmax for RC and PP since the synapses
+// have morphological differences.
+
+ppNMDARSynTau1=5		// PP synaptic rising time constant
+ppNMDARSynTau2=16		// PP synaptic falling time constant
+ppNMDARSynWeight=0.18		// PP synapse gmax in nS
+ppNMDARSynTsd=0.0		// PP synapse tau2 log-normal sd param
+ppNMDARSynWsd=0.0		// PP synapse weight log-normal sd param
+ 
+rcNMDARSynTau1=5 		// RC synaptic rising time constant
+rcNMDARSynTau2=16		// RC synaptic falling time constant
+rcNMDARSynWeight=0.16		// RC synapse gmax in nS
+rcNMDARSynTsd=0.0		// RC synapse tau2 log-normal sd param
+rcNMDARSynWsd=0.0		// RC synapse weight log-normal sd param 
+
+// Mean passive values estimated in Hemond et al. 2009 (Ih paper)
+// RaAll is not a sensitive fit in that context but a
+// more typical value is needed to fit synaptic responses.
+// For justification of different spine factors in PP and RC
+// see Megias et al. 2001 for results in CA1 as well as 
+// Matsuda et al. 2004 plus Ishizuka et al. 1995 for CA3.
+// Axon properties are from Hemond et al. 2008
+
+Cm=0.72 			// Capacitivity in microF/cm^2 (1.44/2)
+Rm=62996			// Membrane resistivity in ohm-cm^2 (31498*2)
+
+RaAll=140			// Axial resistivity in ohm-cm
+//RaAll=198			// Axial resistivity in ohm-cm
+
+RaAxon=50			// Axon-only axial resistivity
+RaSpine=140			// Spine-only axial resistivity
+
+PPSpineAdj=1.0			// Cm,Rm adjustment for PP spines
+RCSpineAdj=2.0			// Cm,Rm adjustment for RC spines
+
+// Parameters for hypothetical K+ channels in spine
+ekspine = -90			// K+ reversal for channels in spine (in mV)
+// gkspine = 120e-3		// K+ density actived in spine (in S/cm^2)
+// gkspine = 55e-3		// K+ density actived in spine (in S/cm^2)
+gkspine =0			// K+ density actived in spine (in S/cm^2)
+
+// Provide channel conductances. These are in S/cm^2.
+// In the model from Hemond et al., 2008 fig 9, there is a shift
+// of voltage sensitivity by 24 mV in most channels.
+// These conductance settings go with figure 9d (non-delay case)
+
+gna=22e-3			// Sodium channel conductivity (all but axon)
+gnaAxon=110e-3			// Sodium channel conductivity for axon
+gkdr=10e-3			// K-dr (delayed rectifier) channel conductivity
+gkap=20e-3			// K-A channel conductivity
+gc=0.01e-3			// Ca-L,N,T channel conductivity in soma (all the same)
+ghd=0.00e-3			// Ih channel conductivity 
+gKc=0.05e-3			// K-C channel conductivity 
+gahp=0.0e-3			// K-ahp channel conductivity 
+gkm=0e-3			// K-M channel conductivity (adapting - soma only in this model)
+gkd=0e-3			// Kd channel conductivity (delayed onset - soma only in this model)
+
+sh=24				// Global voltage shift in mV for channels (Hemond et al. only)
+
+gkaSlope=5.2/350		// Distance dependency for K-A (not used for Hemond et al.)
+gkaSlopeMaxDist=9999		// Maximum distance for K-A dependency (not used for Hemond et al.)			
+
+
+// Misc working variables (global) ----------------------------------
+objref ns			// Common network stimulation
+objref amparNC, nmdarNC		// Network connections
+objref amparSyn, nmdarSyn	// Synapses
+objref hold, seClamp		// Clamps
+objref tvec, ivec, vvec		// Recording vectors for time, current, and voltage 
+objref dvec			// Recording vector for dendrite Vm
+objref iampar,inmdar		// Recording vector for AMPAR and NMDAR currents
+objref outfile			// Output file
+objref impedance		// For figuring out CC input impedance
+objref saveFile			// File to save individual traces to (see saveSynResp below)
+objref rand			// Random number generator 
+objref strFun			// StringsFunction object
+objref adOnPPpath		// flags lookup vector for apical_dendrites
+objref secRef			// temporary section reference 
+
+objref nil			// NULL object (so we can test for NULL, WTG hoc)
+
+isError=0			// global error indicator		
+
+strdef curSecname		// Name part of the current section (see parseSecname)
+curSecnum=0			// Number part of the current section (see parseSecname)
+
+nSomaSec=0			// Number of sections making up the soma
+somaMidSec=0			// Index to section at the middle of the soma (roughly speaking)
+strdef layer			// layer of current segment as string
+layerId=0			// layer as number: 0=SOMA, 1=AXON, 2=SO, 3=SL, 4=SR, 5=LM, -1=ERROR
+
+ory3d=0 			// reoriented y3d value for current segment
+synLoc=0			// location of synapse in current section
+segLen=0			// length of the current segment
+
+ivec = new Vector()		// record of soma current injection
+vvec = new Vector() 		// record of soma voltage
+tvec = new Vector() 		// record of time
+dvec = new Vector()		// record of voltage at the synapse
+iampar = new Vector()		// record AMPAR current
+inmdar = new Vector()		// record NMDAR current
+
+adOnPPpath = new Vector(maxSecnum) // vector for onPPpath lookup by section number
+strFun = new StringFunctions()	// functional instance for string functions
+
+
+// We will accumulate some stats by layer etc.
+// Trunk segments are those in SR that have a PP connection in their subtree.
+totSomaLen=0			// Total length of all soma segments
+totSomaArea=0			// Total area of all soma segments
+
+totAxonLen=0			// Total length of all axon segments
+totAxonArea=0			// Total area of all axon segments
+
+totLMlen=0			// Total length of all segments in LM
+totLMarea=0			// Total area of all segments in LM
+
+totSRlen=0			// Total length of all segments in SR
+totSRarea=0			// Total area of all segments in SR
+totSRTlen=0			// Total length of trunk segments in SR 
+totSRTarea=0			// Total area of all trunk segments in SR
+
+totSOlen=0			// Total length of all segments in SO
+totSOarea=0			// Total area of all segments in SO		
+
+// Create spine sections
+create spineHead // area will be roughly 1 micron^2
+create spineNeck // resistance will be roughly 500 mega-ohm
+spineHead {L=0.5 diam=0.6 nseg=1}
+spineNeck {L=1 diam=0.06 nseg=1}
+spineNeck connect spineHead(0),1
+
+
+// Load the cell topology, otherwise
+// Neuron gets confused about sections.
+// A common axon segment is added below.
+xopen(cell)   
+
+// Remove any type 10 (marker) segments
+if (section_exists("user10")) {
+	print "Removing user 10 segments"
+	forsec "user10" {
+		disconnect()
+		delete_section()
+	}
+}
+
+// Remove any axon segments
+if (section_exists("axon")) {
+	print "Removing axon segments"
+	forsec "axon" {
+		disconnect()
+		delete_section()
+	}
+}
+
+// Now load a replacement axon segment
+load_file(axonPath)
+
+
+// ========================================================
+// Subroutines (defined before they are referenced)
+// ========================================================
+
+// Utility routines for min/max of two values.
+// Note that the documentation for proc even provides
+// the code for this but there is no such min or max
+// function outside of vectors.
+func minVal() {if ($1<$2) { return $1 } else { return $2} }
+func maxVal() {if ($1>$2) { return $1 } else { return $2} }
+
+
+// Get the name and number of the current section. The
+// section name is assumed to be in the form: name[num]
+// Results are in globals curSecname and curSecnum.
+proc parseSecname() {local n
+
+	strdef stemp
+	stemp=secname()
+	n = strFun.substr(stemp,"[")
+	curSecname=stemp
+	curSecnum=-1
+	if (n>=0) {
+		strFun.left(curSecname,n)
+		strFun.right(stemp,n)
+		sscanf(stemp,"[%d",&curSecnum)
+	}
+}
+	
+	
+// Find the layer associated with the current segment.
+// xseg is the relative location within the section (0 to 1).
+// ory3d is set based on segment location in the reoriented
+// cell morphology using orientX, orientY, and orientZ.
+// layer is set to one of "SOMA", "AXON", "SO", "SL", "SR", 
+// "LM", or "ERROR" with layerId set accordingly (0-5,-1). 
+// layerId is returned because you can set string values
+// in hoc but cannot test their values except via strcmp.
+// onPPpath is set to 1 if the current section is an
+// apical_dendrite with a PP segment in its subtree.
+// Otherwise onPPpath is 0. curSecname and curSecnum are
+// set as a side-effect of calling parseSecname.
+
+proc findLayer() {local xseg,xarc,ipt3d,al0,al1,sx3d,sy3d,sz3d
+
+	xseg = $1
+	layer = "ERROR" // no matching layer found (so far)
+	layerId=-1
+	onPPpath=0
+
+	// Determine if the current section is an
+	// apical_dendrite with a PP segment in its
+	// subtree. adTrunk vector is assumed to
+	// already be set with the appropriate values
+	parseSecname()
+	if (strcmp(curSecname,"apical_dendrite")==0) {
+		onPPpath=adOnPPpath.x(curSecnum)
+	}
+
+	// If the current section is a spineHead or spineNeck,
+	// assign an (so far unused) layer and id and stop
+	if (strcmp(curSecname,"spineNeck")==0 || strcmp(curSecname,"spineHead")==0) {
+		layer="SPINE"
+		layerId = 999
+		return
+	}
+
+	// Check for maximum allowed diameter.
+	// Larger dendrites are most likely to be
+	// really part of the soma regardless of type.
+	if (diam(xseg)>maxDendDiam || issection("soma.*")) {
+		layer = "SOMA"
+		layerId = 0
+		return
+	}
+
+	// Also look for any axon segments just in case
+	if (issection("axon.*")) {
+		layer = "AXON"
+		layerId = 1
+		return
+	}
+
+	// Locate 3D points for the current segment
+	// to get a Y-coordinate value.
+	xarc=xseg*L
+	ipt3d=1
+	while (ipt3d<n3d() && arc3d(ipt3d)<xarc) { ipt3d += 1 }
+	if (ipt3d<n3d()) {
+
+		// Estimate the segment center location
+		// from a linear interpolation of points
+		// before and after it in arc length.
+		al0=xarc-arc3d(ipt3d-1)
+		al1=arc3d(ipt3d)-xarc
+		sx3d=(al0*x3d(ipt3d)+al1*x3d(ipt3d-1))/(al0+al1)
+		sy3d=(al0*y3d(ipt3d)+al1*y3d(ipt3d-1))/(al0+al1)
+		sz3d=(al0*z3d(ipt3d)+al1*z3d(ipt3d-1))/(al0+al1)
+
+		// Get the distance along the reoriented y-coord
+		// orientX,Y,Z form a unit vector in the proper
+		// direction with the apical direction up (>0).
+		ory3d=sx3d*orientX+sy3d*orientY+sz3d*orientZ
+
+		// Classify layer based on oriented y-coord
+		if (ory3d>=PPy3d) {
+			layer="LM"
+			layerId=5
+		} else if (ory3d>=SRy3d) {
+			layer = "SR"
+			layerId=4
+		} else if (ory3d>SOy3d) {
+			layer = "SL"
+			layerId = 3
+		} else {
+			layer = "SO"
+			layerId = 2
+		}
+
+	} else {
+		print "arc3d mismatch at ",secname(),"(",xseg,")"
+		layer="ERROR"
+		layerId=-1
+	}
+}
+
+// Do initializations.
+// This is repeated for each simulation pass,
+// that is, once per synapse location simulated.
+
+proc init() {
+	finitialize(Vrest)
+	fcurrent()
+}
+
+
+// Run a simulation pass for a single synapse.
+// Results of the synaptic stimulation are analyzed
+// and summary data is written to a file.
+
+proc runIt() {
+
+	// Set clamps as appropriate for the recording mode.
+	// Note that CCinj is not recomputed here since impedance is
+	// a complicated procedure and the value should not change
+	// from one synapse to the other. Other redundant initializations
+	// contained here are to allow command line invocations with
+	// different parameters.
+
+	seClamp.dur1 = tError+tInit
+	seClamp.amp1 = VCvm
+
+	hold.dur=tError+tInit 
+	hold.amp=0	// set to CCinj in runIt()
+	hold.del=10	// a short delay for visualization
+
+	if (isCC) {
+		seClamp.rs=1e15
+		hold.amp=CCinj
+	} else {
+		seClamp.rs=1
+		hold.amp=0
+	}
+
+	ns.start=tInit
+	tstop=tInit
+	cvode.maxstep(10)
+	run()
+
+	// Stimulated the synapse and record the
+	// results. For this, small time steps
+	// are need to get the respone kinetics.
+	cvode.maxstep(tDelta) // Set sample rate
+	stoprun=0
+	continuerun(tInit+tCont) 
+	if (stoprun) {
+		isError=1
+		print "Stopped by request"
+		return
+	}
+
+ 
+	// Look at the response and extract peak value,
+	// time to peak, and half-height width. If the
+	// the initial recording did not capture enough
+	// data for the analysis, more run time is allowed
+	// in the loop below. First we get time to peak.
+	iMin=1e9
+	vMax=-1e9
+	dMax=-1e9
+	tPeak=0
+	kPeak=0
+	kInit=0
+	tRise1=0
+	tRise2=0
+	tRise=0
+	
+	// Find the index of the end of the initialization period
+	// Note the soma equilibrium values for voltage
+	// and current. These are the baselines for EPSP/C.
+	for (k=0;k<tvec.size() && tvec.x[k]<=tInit; k+=1) {}
+	kInit=k-1
+	iRest=ivec.x[kInit]		// rest soma current for VC
+	vRest=vvec.x[kInit]		// rest soma voltage for CC
+	dRest=dvec.x[kInit]		// rest synapse voltage
+
+	// Make sure that we have passed a peak. If not, keep running
+	// until there is an apparent peak or else we have reached the
+	// maximum allowed time.
+	isDone=0
+	while (!isDone) {
+		k=tvec.size()-1
+		if (k<0) {
+			print "Initial tvec is empty at ",secname(),synLoc
+			print "This should never occur"
+			isError=1
+			return
+		} else if (isCC==0) {
+			for (j=k;!isDone && j>kInit;j=j-1) {
+				if (ivec.x[j-1]<=ivec.x[j]) {
+					isDone = 1
+				}
+			}
+		} else if (isCC==1) {
+			for (j=k;!isDone && j>kInit;j=j-1) {
+				if (vvec.x[j-1]<=vvec.x[j]) {
+					isDone = 1
+				}
+			}
+
+		}
+
+		if (isDone) {
+			break
+		} else if (tvec.x[k]<tInit+tError) {
+			print "Continuing simulation at ",secname(),"(",synLoc,")"
+			stoprun=0
+			continuerun(t+tCont)
+			if (stoprun) {
+				isError=1
+				print "Stopped by request"
+				return
+			}
+		} else {
+			print "Failed to detect response peak for ",secname(),synLoc
+			isError=1
+			return
+		}
+	}
+
+	// Get peak response voltage at synapse
+	for (k=kInit; k<tvec.size(); k+=1) {
+		if (dvec.x[k]>dMax) {
+			dMax=dvec.x[k]
+		}
+	}
+	
+	// For VC, get EPSC peak time, value, and rise time
+	if (isCC==0) {
+		// Locate the peak (negative relative to rest for EPSC)
+		for (k=kInit; k<tvec.size(); k+=1) {
+			if (ivec.x[k]<iMin) { // EPSC<0
+				iMin=ivec.x[k]
+				tPeak=tvec.x[k]
+				kPeak=k
+			}
+		}
+		// Get the 20% and 80% or peak rising time values
+		for (k=kInit; k<=kPeak; k+=1) {
+			if (ivec.x[k]>=0.8*iRest+0.2*iMin) {
+				tRise1=tvec.x[k]
+				iRise1=ivec.x[k]
+			}
+			if (ivec.x[k]>=0.2*iRest+0.8*iMin) {
+				tRise2=tvec.x[k]
+				iRise2=ivec.x[k]
+			}
+		}
+		// Adjust rise time based on actual values at granular time values
+		if (iRise2<iRise1) {
+			tRise=(tRise2-tRise1)*0.6*(iMin-iRest)/(iRise2-iRise1)
+		}
+	}
+
+	// For CC, get EPSP peak time, rise time, and value
+	if (isCC==1) {
+		// Locate the peak (postive relative to rest for EPSP)		 
+		for (k=kInit; k<tvec.size(); k+=1) {
+			if (vvec.x[k]>vMax) { // Note EPSP>0
+				vMax=vvec.x[k]
+				tPeak=tvec.x[k]
+				kPeak=k
+			}
+		}
+		// Get the 20% and 80% or peak rising time values
+		for (k=kInit; k<=kPeak; k+=1) {
+			if (vvec.x[k]<=0.8*vRest+0.2*vMax) {
+				tRise1=tvec.x[k]
+				vRise1=vvec.x[k]
+			}
+			if (vvec.x[k]<=0.2*vRest+0.8*vMax) {
+				tRise2=tvec.x[k]
+				vRise2=vvec.x[k]
+			}
+		}
+		// Adjust rise time based on actual values at granular time values
+		if (vRise2>vRise1) {
+			tRise=(tRise2-tRise1)*0.6*(vMax-vRest)/(vRise2-vRise1)
+		}
+	}
+
+
+	if (tPeak==0) {
+		isError=1
+		print "Failed to detect response peak for ",secname(),synLoc
+		print iMin,vMax,tPeak
+	}
+
+	// Get the rising (pre-peak) half-height time
+	thw1=0
+	thw2=0
+	isDone=0
+	if (isCC==0) for (k=kInit;k<=kPeak && !isDone;k+=1) {
+		if (ivec.x[k]<=(iMin+iRest)/2) {
+			thw1=tvec.x[k]
+			isDone=1
+		}
+	}
+	if (isCC==1) for (k=kInit;k<tvec.size() && !isDone;k+=1) {
+		if (vvec.x[k]>=(vMax+vRest)/2) {
+			thw1=tvec.x[k]
+			isDone=1
+		}
+	}
+	if (!isDone) {
+		isError=1
+		print "Failed to detect half-rise time for ",secname(),synLoc
+	}
+
+	// Now get the falling (post-peak) half-height time.
+	// If the current recording does not contain it,
+	// extend the simulation for additional time.
+	isDone=0
+	while (t<tError+tInit && !isDone) {
+		if (isCC==0) for (k=kInit;k<tvec.size() && isDone==0;k+=1) {
+			if (tvec.x[k]>=tPeak && ivec.x[k]>=(iMin+iRest)/2) {
+				thw2=tvec.x[k]
+				isDone=1
+			}
+		}
+		if (isCC==1) for (k=kInit;k<tvec.size() && isDone==0;k+=1) {
+			if (tvec.x[k]>=tPeak && vvec.x[k]<=(vMax+vRest)/2) {
+				thw2=tvec.x[k]
+				isDone=1
+			}
+		}
+
+		// See if we have detected the falling half-height point.
+		// If not, run the simulation further to try and locate it.
+		if (!isDone) {
+			print "Continuing simulation at ",secname(),"(",synLoc,")"
+			stoprun=0
+			continuerun(t+tCont)
+			if (stoprun) {
+				isError=1
+				print "Stopped by request"
+				return
+			}
+		}
+			
+	}
+	if (!isDone) {
+		isError=1
+		print "Failed to detect half-fall time for ",secname(),synLoc
+	}
+
+	// If error found, do not continue here
+	if (isError) return
+
+	// Write the results in summary form to the output file
+	// and also print some values on the console log to distract any
+	// large semi-aquatic primates watching for their reward cue.
+	if (outfile!=nil) {
+		outfile.printf("%s,%g",secname(),synLoc)
+		outfile.printf(",%s,%g,%g",layer,ory3d,distance(synLoc))
+		outfile.printf(",%g,%g",segLen,segArea)
+		outfile.printf(",%g",onPPpath)
+	}
+
+	if (isCC) {
+		print "EPSP (mV) = ",vMax-vRest
+		if (outfile!=nil) outfile.printf(",CC,%g",vMax-vRest)
+	} else {
+		print "EPSC (pA) = ",(iMin-iRest)*1e3
+		if (outfile!=nil) outfile.printf(",VC,%g",(iMin-iRest)*1e3)
+	}
+
+	print "Rise time (ms) = ",tRise
+	print "Peak time (ms) = ",tPeak-tInit
+	print "Half-height width (ms) = ",thw2-thw1
+	print "Peak synaptic Vm (mV) = ",dMax
+
+	if (outfile!=nil) {
+		outfile.printf(",%g",tRise)
+		outfile.printf(",%g",tPeak-tInit)
+		outfile.printf(",%g",thw2-thw1)
+		outfile.printf(",%g,%g",dRest,dMax)
+		outfile.printf(",%g,%g,%g",amparNC.weight*1e3,amparSyn.tau1,amparSyn.tau2)
+		outfile.printf(",%g,%g,%g",nmdarNC.weight*1e3,nmdarSyn.tau1,nmdarSyn.tau2)
+		outfile.printf("\r\n") // Windows (and html) end of line
+	}
+}
+
+
+// Run just one synapse in the current section.
+proc getSynResp() {local xseg
+	xseg = $1
+	segLen=L/nseg
+
+	// See where this segment is located
+	findLayer(xseg)
+
+	// Skip if this is soma, axon, SL, 
+	// or otherwise an error.
+	if (layerId<=1 || layerId==3 || layerId>=100) { // SOMA, AXON, SL, Spine etc.
+		return
+	}
+
+	// Customize the synapse to the layer and apply
+	// any randomization rules to synapse properties.
+	// Even though Neuron provides normal and log-normal
+	// distributions, we do our own conversion from
+	// the default distribution for efficiency and
+	// in the general interest of knowing exactly what
+	// the results will be. Note that exp(x) where
+	// x~N(0,s^2) does not have a mean of 1. In general
+	// if we want exp(x) to have a mean of 1 we need to
+	// have x~N(-0.5*s^2,s^2). In this case the median
+	// of exp(x) is not the same as the mean.
+
+	rwm = 1
+	rtm = 1
+	if (layerId==2 || layerId==4) { // SO and SR
+		if (randomizeSyn) {
+			rwm = exp(rand.repick()*rcAMPARSynWsd-0.5*rcAMPARSynWsd^2)
+			rtm = exp(rand.repick()*rcAMPARSynTsd-0.5*rcAMPARSynTsd^2)
+		}
+		amparNC.weight=rcAMPARSynWeight*1e-3*rwm
+		amparSyn.tau1=minVal(rcAMPARSynTau1,rtm*rcAMPARSynTau2)
+		amparSyn.tau2=maxVal(rcAMPARSynTau1,rtm*rcAMPARSynTau2)
+
+		if (randomizeSyn) {
+			rwm = exp(rand.repick()*rcNMDARSynWsd-0.5^rcNMDARSynWsd^2)
+			rtm = exp(rand.repick()*rcNMDARSynTsd-0.5*rcNMDARSynTsd^2)
+		}
+		nmdarNC.weight=rcNMDARSynWeight*1e-3*rwm
+		nmdarSyn.tau1=minVal(rcNMDARSynTau1,rtm*rcNMDARSynTau2)
+		nmdarSyn.tau2=maxVal(rcNMDARSynTau1,rtm*rcNMDARSynTau2)
+
+	} else if (layerId==5) { // LM
+		if (randomizeSyn) {
+			rwm = exp(rand.repick()*ppAMPARSynWsd-0.5*ppAMPARSynWsd^2)
+			rtm = exp(rand.repick()*ppAMPARSynTsd-0.5*ppAMPARSynTsd^2)
+		}
+		amparNC.weight=ppAMPARSynWeight*1e-3*rwm
+		amparSyn.tau1=minVal(ppAMPARSynTau1,rtm*ppAMPARSynTau2)
+		amparSyn.tau2=maxVal(ppAMPARSynTau1,rtm*ppAMPARSynTau2)
+
+		if (randomizeSyn) {
+			rwm = exp(rand.repick()*ppNMDARSynWsd-0.5*ppNMDARSynWsd^2)
+			rtm = exp(rand.repick()*ppNMDARSynTsd-0.5*ppNMDARSynTsd^2)
+		}
+		nmdarNC.weight=ppNMDARSynWeight*1e-3*rwm
+		nmdarSyn.tau1=minVal(ppNMDARSynTau1,rtm*ppNMDARSynTau2)
+		nmdarSyn.tau2=maxVal(ppNMDARSynTau1,rtm*ppNMDARSynTau2)
+
+	} else {
+		print "Bad layerId value=",layerId
+		return
+	}
+
+	// Reset synapse conductance and [Mg++] based on
+	// types of synapses not blocked. 
+	nmdarSyn.mg=lowExtMg			// Assume low [Mg++] as the default
+	if (useAMPAR && useNMDAR) {		// Both types of responses together
+		nmdarSyn.mg=highExtMg
+	} else if (useAMPAR) {			// Only AMPAR
+		nmdarNC.weight=0
+	} else if (useNMDAR) {			// Only NMDAR
+		amparNC.weight=0
+	} else {
+		print "Both AMPAR and NMDAR are blocked"
+		return
+	}
+ 
+	// Finish up with the synapses (this is redundant but safety first)
+	amparSyn.e=synErev
+	nmdarSyn.e=synErev
+
+	// Connect synapses with their postsynaptic element
+	// For LM synapses go directly on the dendrite while
+	// elsewhere, they are on the spine head if useSpine=1
+	synLoc=xseg
+	if (useSpine!=1 || layerId==5) {
+		amparSyn.loc(synLoc)
+		nmdarSyn.loc(synLoc)
+	} else {
+		// Customize the spine head for the equivalent of
+		// a K+ conductance of resistivity gspine.
+		// Also, make sure that the spine has an Ra
+		// to give a net 500 M-ohm axial resistance.
+		spineHead {
+			e_pas = (vRest/Rm + gkspine*ekspine)/(1/Rm+gkspine)
+			g_pas=1/Rm+gkspine
+			Ra=RaSpine
+		}
+		spineNeck { Ra=RaSpine }
+
+		// Connect synapse to the spine head and then
+		// connect the spine neck with the dendrite
+		spineHead{ amparSyn.loc(0.5) nmdarSyn.loc(0.5) }
+		spineNeck disconnect()
+		connect spineNeck(0),synLoc
+		soma[somaMidSec] distance(0,0.5)	
+	}
+	
+
+	// If AOK, go run something useful
+	if (!isError) {
+
+		segArea=area(synLoc)
+		dvec.record(&v(synLoc))
+		iampar.record(&amparSyn.i)
+		inmdar.record(&nmdarSyn.i)
+
+		// Indicate where the synapse is located
+		printf("\n%s(%g) ",secname(),synLoc)
+		printf("layer=%s ory3d=%g dist=%g\n",layer,ory3d,distance(synLoc))
+		runIt()
+
+	}
+
+	// If using spines, disconnect the spine and
+	// restore distances to the original values.
+	if (useSpine==1) {
+		spineNeck disconnect()
+		soma[somaMidSec] distance(0,0.5)
+	}
+}
+
+// Simulate synaptic responses with a synapse
+// placed in each segment, one at a time for all
+// segments in SO, SR, or LM layers.
+
+proc sampleSynResps() {
+
+  outfile = new File()
+  outfile.wopen(outPath)
+
+  // Write a header line to outfile
+  outfile.printf("%s","section,loc,layer,y,dist,len,area,trunk,type")
+  outfile.printf("%s",",peakValue,riseTime,peakTime,halfWidth,synRest,synPeak")
+  outfile.printf("%s",",gAMPAR,tau1AMPAR,tau2AMPAR,gNMDAR,tau1NMDAR,tau2NMDAR")
+  outfile.printf("\r\n") // Windows (and html) end of line
+
+  // Loop through all sections
+  forall {
+
+	// Loop through segments placing the synapse in
+	// appropriate segments and recording the synaptic
+	// response at that location.
+
+	for (xseg,0) {
+
+		// Get (and write) the response for a synapse
+		// at location xseg in the current section.
+		getSynResp(xseg)
+	}
+  }
+
+  outfile.close()
+}
+
+// Simulate a single synaptic activation and write the results
+// to a file. This function would normally only be invoked manually.
+// Invocation is saveSynResp(xseg). The path name of the file to save
+// to is taken from global string savePath. Voltages are saved as mV
+// and currents as pA. Time is in units of ms.
+
+proc saveSynResp() {local xseg
+	xseg=$1
+	saveFile = new File()
+	saveFile.wopen(savePath)
+
+	tCont=200 // make sure whole response is captured
+	getSynResp(xseg)
+	
+	// Write a CSV header line
+	saveFile.printf("time,soma,dend,iampar,inmdar\r\n")
+
+	// Write the appropriate data values.
+	if (isCC) { // save time and voltage, etc.
+		for(k=0; k<tvec.size(); k+=1) {
+			saveFile.printf("%g,%g,%g",tvec.x[k],vvec.x[k],dvec.x[k])
+			saveFile.printf(",%g,%g\r\n",1e3*iampar.x[k],1e3*inmdar.x[k])
+		}
+	} else { // save time and current, etc.
+		for(k=0; k<tvec.size(); k+=1) {
+			saveFile.printf("%g,%g,%g",tvec.x[k],1e3*ivec.x[k],dvec.x[k])
+			saveFile.printf(",%g,%g\r\n",1e3*iampar.x[k],1e3*inmdar.x[k])
+		}
+	}
+
+	saveFile.close()
+}
+
+
+// ================================
+// End Subroutines
+// ================================
+
+
+// Find out how many sections make up the soma.
+// Then look for the one with the largest diameter
+// and designate it as the middle section.
+forsec "soma" {nSomaSec=nSomaSec+1}
+maxDiam=0
+for (k=0;k<nSomaSec;k=k+1) soma[k] {
+	if (maxDiam<=diam) {
+		maxDiam=diam
+		somaMidSec=k
+	}
+}
+print "nSomaSec=",nSomaSec," somaMidSec=",somaMidSec	 
+
+// In Neuromorpho SWC files, the soma is sometimes
+// represented by a single point with the radius being
+// the radius of a sphere of equivalent area. When
+// CVAPP converts these files to HOC, the single point
+// becomes two points with a small (0.01) difference in
+// Z coordinates. Detect this problem and change the
+// soma to a cylinder with area equivalent to the
+// sphere intended in the SWC file. The cylinder is
+// arbitrarily aligned along the Y axis.
+
+access soma[somaMidSec]
+
+if (nSomaSec==1) {
+if (n3d()==2) {
+if (abs(z3d(0)-z3d(1))<0.02) {
+if (diam3d(0)==diam3d(1)) {
+if (y3d(0)==y3d(1)) {
+if (x3d(0)==x3d(1)) {
+	r = diam3d(0)/2
+	pt3dchange(0,x3d(0),y3d(0)-r,z3d(0),2*r)
+	pt3dchange(1,x3d(1),y3d(1)+r,z3d(1),2*r)
+	print "Soma area changed to ",4*PI*r^2
+}}}}}}
+
+
+// Set nseg so that each segment is at most seglen long.
+// For this purpose, an odd number of segments is not
+// important since we are not going to change nseg again.
+// soma area(0.5) // from fixnseg.hoc -- what does it do?
+forall {
+	nseg = int(1-1e-8+L/maxSegLen)
+}
+
+
+
+// Initialize the lookup table for detecting apical_dendrites
+// that connect somewhere into PP. Each section in LM is found
+// and that section and all parents in turn are flagged in adOnPPpath.
+// This assumes that the most distal part of a section is in LM
+// if any part of the section is (this should always be true).
+forsec "apical_dendrite" {
+	findLayer(1) // test most distal part of the section
+	if (layerId==5) {
+		adOnPPpath.x(curSecnum)=1			
+		while (curSecnum>=0) {
+			adOnPPpath.x(curSecnum)=1
+			apical_dendrite[curSecnum] {
+				secRef = new SectionRef()
+				secRef.parent parseSecname()
+			}
+			if (strcmp(curSecname,"apical_dendrite")!=0) break
+		}
+	}	
+}
+
+// Create any special mechanisms. The soma is the
+// context for the clamps, but the synapse is
+// later relocated to different places as needed.
+
+soma[somaMidSec] {
+
+	// Set up a voltage clamp to mimic experimental
+	// conditions prior to stimulation.
+	seClamp = new SEClamp(0.5)
+	seClamp.dur1 = tError+tInit
+	seClamp.amp1 = VCvm
+
+	// Just for fun, benchmark how long it takes for VC
+	// to propagate from the soma into dendrites.
+	// seClamp.dur1 = 500
+	// seClamp.amp1 = -65
+	// seClamp.dur2 = 500
+	// seClamp.amp2 = -80
+
+	hold = new IClamp(0.5)
+	hold.dur=tError+tInit 
+	hold.amp=0	// set to CCinj in runIt()
+	hold.del=10	// a short delay for visualization
+
+	// Adjust for (initial) recording mode
+	// This starts things out right when
+	// running in interactive mode. 	
+	if (isCC) {
+		seClamp.rs=1e15
+	} else {
+		seClamp.rs=1
+		hold.amp=0
+	}
+
+	// Initialize the stimulation and synapse
+	ns = new NetStim(.5)
+	ns.start=0 			// start time will be reset later
+	ns.number=1			// only a single spike is simulated
+	ns.interval=1e9 		// not really used here
+
+	// Create a synapse that will be moved around.
+	// Even though AMPAR and NMDAR actually coexist
+	// in one synapse, for the present purpose they
+	// are treated separately. Note that this is not
+	// entirely valid if a spine neck is involved
+	// since the membrane potential at the spine
+	// head, where the receptors are located, is not
+	// the same as on the main dendrite membrane. Hence
+	// AMPAR induced depolarizations are off a bit.
+	// However, the parameters to accurately model
+	// the spine are not well determined experimentally. 
+	amparSyn = new Exp2Syn(0.5)
+	nmdarSyn = new Exp2NMDAR(0.5)	
+	amparSyn.e=synErev
+	nmdarSyn.e=synErev
+}
+soma[somaMidSec] distance(0,0.5)	// sets soma midpoint as origin
+
+
+// Set up to record from the soma
+ivec.record(&seClamp.i)
+vvec.record(&soma[somaMidSec].v(0.5))
+tvec.record(&t)
+
+// Create network connections. These are customized
+// based on location in getSynResp().
+amparNC = new NetCon(ns, amparSyn, 0, 0, 0)
+nmdarNC = new NetCon(ns, nmdarSyn, 0, 0, 0)
+
+
+// Insert normal mechanisms including any active channels
+if (addChannels && useHemond2008) { // Mimic the Hemond et al. model
+
+	// Add channels to different types of sections
+	// For conducances known to be 0, channels are not added.
+	// Note that gKc and gahp are both dependent on internal
+	// calcium concentration. The use of cacum here is from
+	// the Hemond et al. 2008 model and is used AS IS. It is
+	// not intended to be highly accurate with respect to
+	// the underlying biophysics of calcium dynamics.
+	
+	forsec "dendrite" { // both apical and basal dendrites
+		if (gna>0) {insert na3 gbar_na3=gna sh_na3=sh}
+		if (ghd>0) {insert hd  ghdbar_hd=ghd sh_hd=sh}
+		if (gc>0 || gKc>0) {insert cacum depth_cacum=diam/2}
+		if (gc>0) {
+			insert cal gcalbar_cal=gc
+			insert can gcanbar_can=gc
+			insert cat gcatbar_cat=gc
+		}
+		if (gkdr>0) {insert kdr gkdrbar_kdr=gkdr sh_kdr=sh}
+		if (gkap>0) {insert kap gkabar_kap=gkap sh_kap=sh}
+		if (gKc>0)  {insert cagk gbar_cagk=gKc}
+		if (gahp>0) {insert KahpM95 gbar_KahpM95=gahp}
+	}
+	forsec "soma" {
+		insert na3 gbar_na3=gna sh_na3=sh
+		insert hd  ghdbar_hd=ghd sh_hd=sh
+		insert cacum depth_cacum=diam/2
+		insert cal gcalbar_cal=gc
+		insert can gcanbar_can=gc
+		insert cat gcatbar_cat=gc
+		insert kdr gkdrbar_kdr=gkdr sh_kdr=sh
+		insert kap gkabar_kap=gkap sh_kap=sh
+		insert km gbar_km=gkm sh_km=sh
+		insert kd gkdbar_kd=gkd sh_kd=sh
+		insert cagk gbar_cagk=gKc
+		insert KahpM95 gbar_KahpM95=gahp
+
+	}
+	forsec "axon" {
+		insert na3 gbar_na3=gnaAxon sh_na3=sh
+		insert kdr gkdrbar_kdr=gkdr sh_kdr=sh
+		insert kap gkabar_kap=gkap sh_kap=0 // Note 0 mV shift
+	}
+}
+
+if (addChannels && !useHemond2008) { // Only Kdr and K-A with no shifts
+
+	forsec "dendrite" { // both apical and basal dendrites
+		insert kdr gkdrbar_kdr=0 sh_kdr=0
+		insert kap gkabar_kap=0
+	}
+	forsec "soma" {
+		insert kdr gkdrbar_kdr=gkdr sh_kdr=0
+		insert kap gkabar_kap=gkap sh_kap=0
+
+	}
+	forsec "axon" {
+		insert kdr gkdrbar_kdr=gkdr sh_kdr=0
+		insert kap gkabar_kap=gkap sh_kap=0
+	}
+}
+
+
+// Customize each compartment as needed
+forall {
+
+	insert pas	// Add passive conductances
+
+	// Set passive params section variables. Ra is special and
+	// unlike pas properties, cannot change within a section.
+	Ra=RaAll
+
+	// Set reversal potentials based on what channels are found
+	if (ismembrane("na3")) {
+		ena=55		// Na+ reversal
+	}
+	if (ismembrane("kdr") || ismembrane("kap") || ismembrane("kad")) {
+		ek=-90		// K+ reversal
+	}
+
+	// Handle segments one at a time to allow for any
+	// distance or layer dependencies.
+	for (xx,0) {
+
+		findLayer(xx)
+
+		// Accumulate membrane area based on layerId
+		if (layerId==0) { 
+			totSoma += area(xx)
+		} else if (layerId==2) { 
+			totBasal += area(xx)
+		} else if (layerId>=3) {
+			totApical += area(xx)
+		} 
+
+		// Get spine adjustment factors for this location
+		spineAdj=1
+		if (layerId==5) { spineAdj=PPSpineAdj }
+		if (layerId==2 ||layerId==4) { spineAdj=RCSpineAdj }
+
+		xxDist=abs(distance(xx))
+
+		// Start with baseline values
+		cmHere = Cm
+		gmHere = 1/Rm
+
+		if (layerId>1) { // not soma or axon
+
+			// Adjust membrane capacitance
+			cmHere *= spineAdj
+
+			// Adjust membrane conductance
+			gmHere *= spineAdj
+		}
+
+		if (layerId==1) { // Axon
+			raHere = RaAxon
+		}
+
+		// Set location dependent passive params
+		e_pas(xx) = Vrest
+		cm(xx) = cmHere
+		g_pas(xx) = gmHere		
+
+		// Set any active channel conductances that are dependent
+		// on layer or distance from soma. This is not used for
+		// the Hemond et al. 2008 model.
+		if (addChannels && !useHemond2008) {
+			if (layerId==2 || layerId==4 || layerId==5) { // SO or SR or LM
+				if (ismembrane("kap")) {
+					gkabar_kap(xx) = gkap*(1+gkaSlope*minVal(xx,gkaSlopeMaxDist))
+				}
+				if (ismembrane("kad")) {
+					gkabar_kad(xx) = gkap*(1+gkaSlope*minVal(xx,gkaSlopeMaxDist))
+				}
+				gkdrbar_kdr(xx) = gkdr
+			}
+		}
+	}
+}
+
+
+// If CC, get the input impedance of the cell
+// so that we can inject the right amount of current
+// to get to the correct holding potential.
+
+
+if (isCC) {
+	init() // Set initial voltages
+	impedance=new Impedance(0)
+
+	soma[somaMidSec] {
+		impedance.loc(0.5)
+//		impedance.compute(0,1) // this fails in Neuron 7.1
+		impedance.compute(0) // good enough for now
+	}
+
+	rinput=impedance.input(0)
+	print "Input impedance = ",rinput
+	CCinj=(CCvm-soma[somaMidSec].v(0.5))/rinput
+}
+
+// Gather some morphology statistics
+forall for (xseg,0) {
+	findLayer(xseg)
+	segLen=L/nseg
+	if (layerId==0) {
+		totSomaLen += segLen
+		totSomaArea += area(xseg)
+	}
+	if (layerId==1) {
+		totAxonLen += segLen
+		totAxonArea += area(xseg)
+	}
+	if (layerId==2) {
+		totSOlen += segLen
+		totSOarea += area(xseg)
+	}
+	if (layerId==4) {
+		totSRlen += segLen
+		totSRarea += area(xseg)
+		if (onPPpath) {
+			totSRTlen += segLen
+			totSRTarea += area(xseg)
+		}
+	}
+	if (layerId==5) {
+		totLMlen += segLen
+		totLMarea += area(xseg)
+	}
+}
+
+// Initialize the random number generator with a seed.
+// Even though this is not needed for Random, explicitly
+// start with a normal distribution N(0,1).
+// The total membrane area is included in the seed
+// to allow each cell some distinctiveness.
+rand = new Random(randSeed+totSomaArea+totLMarea+totSRarea+totSOarea)
+rand.normal(0,1)
+
+
+// Run the simulation if requested.
+if (runStim) {
+	sampleSynResps()
+}
+
+// Remind us again what we were running when all this
+// started (in some cases, a long long time ago).
+print " "
+print "Cell = ",cell
+print "Out = ",outPath
+print "Maximum segment length = ",maxSegLen
+if (useAMPAR) print "AMPAR responses are simulated"
+if (useNMDAR) print "NMDAR responses are simulated"
+
+// Show morphology statistics
+print " "
+print "Total Soma length and area = ",totSomaLen," ",totSomaArea
+print "Total Axon length and area = ",totAxonLen," ",totAxonArea
+print "Total LM length and area = ",totLMlen," ",totLMarea
+print "Total SR length and area = ",totSRlen," ",totSRarea
+print "Total SR trunk length and area = ",totSRTlen," ",totSRTarea
+print "Total SR non-trunk length and area = ",totSRlen-totSRTlen," ",totSRarea-totSRTarea
+print "Total SO length and area = ",totSOlen," ",totSOarea
+print " "
+
+
+
+
+

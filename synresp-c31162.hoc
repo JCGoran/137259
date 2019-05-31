@@ -1,0 +1,20 @@
+// Set parameters unique to this cell before invoking
+// the synaptic response procedure
+
+// Set the y-coord orientation for the cell
+orientX= 0.07189352 
+orientY= 0.9790495 
+orientZ= 0.1905081 
+
+// Locate the (reoriented) boundaries between layers
+PPy3d=315		// Minimum y-coord value for PP (PP-SR boundary)
+SRy3d=88		// Minimum Y-coord value for SR (SR-SL boundary)
+SOy3d=0			// maximum y-coord value for SO
+
+strdef cell		// hoc file with cell geometry
+strdef outPath		// output file name
+
+cell="ama-c31162.CNG.hoc"
+outPath="out-c31162.csv"
+
+load_file("synresp.hoc")

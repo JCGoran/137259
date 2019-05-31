@@ -1,0 +1,109 @@
+// Demo.hoc - demonstrate interactive use of the passive cell model by
+// showing plots similar to those found in figure 2a of the article by
+// Baker et al. (2010) Journal of Computational Neuroscience (online first).
+
+// There are some assumptions made here. synresp.hoc is assumed to have
+// isInteractive=1, runStim=0, isCC=0, useAMPAR=1, and useNMDAR=0.
+// We also assume that the current directory is set to the directory
+// containing the model .HOC files, which should be true as long
+// as the demo was launched from the same directory as the model.
+
+
+// Load the file that defines the target cell.
+// This automatically loads synresp.hoc.
+// Normally isInteractive will be set in synresp.hoc,
+// so it is an error if this did not occur.
+
+isInteractive = -1 // an invalid value
+load_file("synresp-c31162.hoc")
+
+objref errDialog
+if (isInteractive<0) {
+
+  errDialog = new VBox()
+  errAns=errDialog.dialog("Required files were not loaded. Quit now?","Yes","No")
+  if (errAns==1) quit()
+}
+
+// Load a session file defining the desired plots
+load_file("demo.ses")
+
+// Just to make sure, set critical parameters defining
+// the simulation. Normally these should be set in
+// synresp.hoc before starting the procedure.
+isCC=0
+useAMPAR=1
+useNMDAR=0
+
+// Run the simulation corresponding with figure 2A in the article,
+// and put the command on the console for general information.
+// By default, getSynResp runs the simulation only as long as
+// necessary to extract response half-height width. Setting
+// the continuation time, tCont, extends the simulation time to
+// permit more of the trace to be plotted as in Figure 2a.
+
+print "Running the simulation corresponding with Figure 2a"
+print "apical_dendrite[67] {getSynResp(0.22)}"
+
+tCont=100
+apical_dendrite[67] {getSynResp(0.22)}
+
+
+objref rawTime,rawData,rawFileX,rawFileY
+objref smoothedTime,smoothedData,smoothedFileX,smoothedFileY
+objref tracePlot
+
+if (1) { // do the experimental data plot (or not)
+
+print "Plotting experimental trace from Figure 2a"
+
+// Read experimental data and add it to the plot.
+// Data is in the form of column vectors of time and data values.
+// To overlap the smoothed data trace with the simulation, the resting
+// values must be aligned prior to plotting. Experimental data
+// values have been converted to mA, the unit of measure for seClamp.
+// iRest is set in funtion runIt() in synresp.hoc as a side-effect of
+// getSynResp().
+ 
+tracePlot = graphList[1].object(0)
+
+rawTime = new Vector(700)
+rawData = new Vector(700)
+rawFileX = new File("demo-fig2a-raw-time.csv")
+rawFileY = new File("demo-fig2a-raw-data.csv")
+
+smoothedTime = new Vector(700)
+smoothedData = new Vector(700)
+smoothedFileX = new File("demo-fig2a-smoothed-time.csv")
+smoothedFileY = new File("demo-fig2a-smoothed-data.csv")
+
+rawFileX.ropen()
+rawTime.scanf(rawFileX)
+rawFileX.close()
+
+rawFileY.ropen()
+rawData.scanf(rawFileY)
+rawFileY.close()
+
+restAdj = iRest - rawData.x[0] + 0.005
+for (i=0;i<rawData.size();i=i+1) {
+  rawData.x[i]=rawData.x[i]+restAdj
+}
+
+smoothedFileX.ropen()
+smoothedTime.scanf(smoothedFileX)
+smoothedFileX.close()
+
+smoothedFileY.ropen()
+smoothedData.scanf(smoothedFileY)
+smoothedFileY.close()
+
+restAdj = iRest - smoothedData.x[0]
+for (i=0;i<smoothedData.size();i=i+1) {
+  smoothedData.x[i]=smoothedData.x[i]+restAdj
+}
+
+rawData.plot(tracePlot,rawTime,3,1)
+smoothedData.plot(tracePlot,smoothedTime,2,1)
+
+} // end experimental data plot

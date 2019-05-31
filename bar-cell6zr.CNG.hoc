@@ -1,0 +1,2143 @@
+{create soma[1]}
+{create axon[3]}
+{create dendrite[63]}
+{create apical_dendrite[76]}
+
+{access soma[0]}
+{pt3dclear()}
+{pt3dadd(4.062,14.938,-50.948,16.705)}
+{pt3dadd(4.062,14.938,-50.958,16.705)}
+
+{soma[0] connect axon[0](0), 1}
+{access axon[0]}
+{pt3dclear()}
+{pt3dadd(4.062,14.938,-50.958,16.705)}
+{pt3dadd(0,0,-43,1.6)}
+{pt3dadd(13.5,-17.5,-43,1.6)}
+{pt3dadd(13.5,-29,-51,1.3)}
+{pt3dadd(12.5,-35,-47,0.9)}
+{pt3dadd(10,-39.5,-48,0.9)}
+{pt3dadd(10.5,-42.5,-45,0.9)}
+{pt3dadd(12.5,-48.5,-42,0.9)}
+{pt3dadd(14.5,-52.5,-39.5,0.9)}
+{pt3dadd(16.5,-57,-36.5,0.9)}
+{pt3dadd(21.5,-62,-33.5,0.9)}
+{pt3dadd(22,-65,-26,0.9)}
+{pt3dadd(22,-67,-26,0.9)}
+{pt3dadd(27.5,-70.5,-25,0.8)}
+{pt3dadd(29,-74.5,-21,0.8)}
+{pt3dadd(32.5,-75,-18,0.8)}
+{pt3dadd(37.5,-78.5,-17,0.8)}
+{pt3dadd(41.5,-80.5,-17,0.8)}
+{pt3dadd(47.5,-79,-11.5,0.8)}
+{pt3dadd(51,-77,-10.5,0.8)}
+{pt3dadd(54,-77,-4.5,0.8)}
+
+{axon[0] connect axon[1](0), 1}
+{access axon[1]}
+{pt3dclear()}
+{pt3dadd(54,-77,-4.5,0.8)}
+{pt3dadd(62.5,-83.5,-3,0.5)}
+{pt3dadd(73,-84.5,0,0.5)}
+{pt3dadd(80.5,-84.5,2.5,0.5)}
+{pt3dadd(91.5,-88,0.5,0.5)}
+{pt3dadd(102.5,-90.5,2.5,0.5)}
+{pt3dadd(110.5,-92.5,6.5,0.5)}
+{pt3dadd(122.5,-96.5,-3,0.5)}
+{pt3dadd(132,-98,-6.5,0.5)}
+{pt3dadd(141,-98,-10.5,0.5)}
+{pt3dadd(146.5,-100,-20,0.5)}
+{pt3dadd(152,-105.5,-22,0.5)}
+{pt3dadd(156,-113,-28.5,0.5)}
+{pt3dadd(161,-119.5,-34.5,0.5)}
+{pt3dadd(163.5,-125,-43,0.5)}
+{pt3dadd(168,-132,-59.5,0.5)}
+{pt3dadd(172.5,-138.5,-61.5,0.3)}
+{pt3dadd(179,-143.5,-69,0.3)}
+{pt3dadd(190.5,-148,-73,0.3)}
+{pt3dadd(195.5,-151.5,-75,0.3)}
+{pt3dadd(204,-153.5,-72,0.3)}
+
+{axon[0] connect axon[2](0), 1}
+{access axon[2]}
+{pt3dclear()}
+{pt3dadd(54,-77,-4.5,0.8)}
+{pt3dadd(55,-71.5,-7.5,0.4)}
+{pt3dadd(58.5,-66,0,0.4)}
+{pt3dadd(60,-58.5,7.5,0.4)}
+{pt3dadd(59.5,-54,15,0.4)}
+{pt3dadd(60.5,-46.5,22.5,0.4)}
+{pt3dadd(60,-41.5,24.5,0.4)}
+{pt3dadd(61.5,-37,28.5,0.4)}
+{pt3dadd(62,-32.5,34,0.4)}
+{pt3dadd(62,-27.5,41,0.4)}
+{pt3dadd(62.5,-25,39,0.4)}
+{pt3dadd(59,-27.5,43,0.4)}
+
+{soma[0] connect apical_dendrite[0](0), 1}
+{access apical_dendrite[0]}
+{pt3dclear()}
+{pt3dadd(4.062,14.938,-50.958,16.705)}
+{pt3dadd(11,32,-66,5.4)}
+{pt3dadd(11,41,-77.5,4.6)}
+{pt3dadd(14.5,48.5,-79.5,3.8)}
+{pt3dadd(16.5,54,-79.5,3.8)}
+{pt3dadd(19.5,60,-84.5,2.8)}
+{pt3dadd(22.5,66,-86.5,2.8)}
+{pt3dadd(23,68.5,-80.5,2.8)}
+
+{apical_dendrite[0] connect apical_dendrite[1](0), 1}
+{access apical_dendrite[1]}
+{pt3dclear()}
+{pt3dadd(23,68.5,-80.5,2.8)}
+{pt3dadd(23.5,73,-93,2.5)}
+{pt3dadd(24.5,79.5,-91,2.5)}
+{pt3dadd(25.5,88.5,-91,2)}
+{pt3dadd(26,96.5,-92,1.5)}
+{pt3dadd(24.5,102,-89,1.5)}
+
+{apical_dendrite[1] connect apical_dendrite[2](0), 1}
+{access apical_dendrite[2]}
+{pt3dclear()}
+{pt3dadd(24.5,102,-89,1.5)}
+{pt3dadd(23.5,106,-89,0.3)}
+{pt3dadd(17.5,115.5,-95,0.3)}
+{pt3dadd(15.5,121.5,-95,0.3)}
+{pt3dadd(13,128.5,-98,0.3)}
+{pt3dadd(13,133.5,-101.5,0.3)}
+{pt3dadd(16,143.5,-102.5,0.3)}
+{pt3dadd(16.5,151.5,-100,0.3)}
+{pt3dadd(19,157,-109.5,0.3)}
+{pt3dadd(20,164.5,-110.5,0.3)}
+{pt3dadd(19.5,171.5,-114,0.3)}
+{pt3dadd(20,177,-111.5,0.3)}
+{pt3dadd(21,182.5,-111.5,0.3)}
+{pt3dadd(23.5,188.5,-116,0.3)}
+
+{apical_dendrite[1] connect apical_dendrite[3](0), 1}
+{access apical_dendrite[3]}
+{pt3dclear()}
+{pt3dadd(24.5,102,-89,1.5)}
+{pt3dadd(27,107.5,-89,1.6)}
+{pt3dadd(26,111.5,-91,1.6)}
+
+{apical_dendrite[3] connect apical_dendrite[4](0), 1}
+{access apical_dendrite[4]}
+{pt3dclear()}
+{pt3dadd(26,111.5,-91,1.6)}
+{pt3dadd(26,112.5,-91,1.6)}
+{pt3dadd(23,117,-90,0.5)}
+{pt3dadd(19.5,123,-96,0.5)}
+{pt3dadd(17.5,127,-100,0.5)}
+{pt3dadd(14.5,134.5,-103.5,0.5)}
+{pt3dadd(9,142,-102.5,0.5)}
+{pt3dadd(9,142,-100,0.3)}
+
+{apical_dendrite[3] connect apical_dendrite[5](0), 1}
+{access apical_dendrite[5]}
+{pt3dclear()}
+{pt3dadd(26,111.5,-91,1.6)}
+{pt3dadd(27.5,113.5,-92,0.3)}
+
+{apical_dendrite[5] connect apical_dendrite[6](0), 1}
+{access apical_dendrite[6]}
+{pt3dclear()}
+{pt3dadd(27.5,113.5,-92,0.3)}
+{pt3dadd(28.5,117,-92,0.3)}
+{pt3dadd(30.5,119.5,-95,0.3)}
+{pt3dadd(33,124,-99,0.3)}
+{pt3dadd(39,134,-96,0.3)}
+{pt3dadd(40.5,135.5,-95,0.3)}
+{pt3dadd(43,139.5,-94,0.3)}
+{pt3dadd(47,145,-96,0.3)}
+{pt3dadd(50.5,152.5,-101.5,0.3)}
+{pt3dadd(53,160,-99,0.3)}
+{pt3dadd(56.5,168.5,-102.5,0.3)}
+{pt3dadd(59.5,174,-106.5,0.3)}
+{pt3dadd(62,183.5,-108.5,0.3)}
+{pt3dadd(67.5,191,-102.5,0.3)}
+{pt3dadd(68,193.5,-109.5,0.3)}
+{pt3dadd(70.5,203,-114,0.3)}
+{pt3dadd(75,211,-114,0.3)}
+{pt3dadd(76,218.5,-114,0.3)}
+{pt3dadd(78.5,224,-117,0.3)}
+{pt3dadd(81.5,229.5,-119,0.3)}
+
+{apical_dendrite[5] connect apical_dendrite[7](0), 1}
+{access apical_dendrite[7]}
+{pt3dclear()}
+{pt3dadd(27.5,113.5,-92,0.3)}
+{pt3dadd(28,124,-89,0.8)}
+{pt3dadd(29.5,134,-86.5,0.8)}
+{pt3dadd(33,144.5,-93,0.8)}
+{pt3dadd(33.5,151.5,-96,0.8)}
+{pt3dadd(35,159.5,-94,0.8)}
+{pt3dadd(36,167.5,-98,0.8)}
+{pt3dadd(38,179,-97,0.8)}
+{pt3dadd(38,188,-102.5,0.8)}
+{pt3dadd(38,188,-101.5,0.8)}
+
+{apical_dendrite[7] connect apical_dendrite[8](0), 1}
+{access apical_dendrite[8]}
+{pt3dclear()}
+{pt3dadd(38,188,-101.5,0.8)}
+{pt3dadd(38.5,190.5,-101.5,0.3)}
+{pt3dadd(41,194,-102.5,0.3)}
+{pt3dadd(42.5,197.5,-102.5,0.3)}
+{pt3dadd(42.5,198,-102.5,0.3)}
+
+{apical_dendrite[7] connect apical_dendrite[9](0), 1}
+{access apical_dendrite[9]}
+{pt3dclear()}
+{pt3dadd(38,188,-101.5,0.8)}
+{pt3dadd(35,199,-104.5,0.7)}
+{pt3dadd(34,203.5,-105.5,0.7)}
+{pt3dadd(34,207.5,-101.5,0.7)}
+{pt3dadd(35,209,-101.5,0.7)}
+
+{apical_dendrite[9] connect apical_dendrite[10](0), 1}
+{access apical_dendrite[10]}
+{pt3dclear()}
+{pt3dadd(35,209,-101.5,0.7)}
+{pt3dadd(39,216,-102.5,0.3)}
+{pt3dadd(43,224,-97,0.3)}
+{pt3dadd(45,231.5,-101.5,0.3)}
+{pt3dadd(48,242.5,-101.5,0.3)}
+{pt3dadd(51,254,-101.5,0.3)}
+{pt3dadd(51.5,262,-102.5,0.3)}
+{pt3dadd(53.5,267,-102.5,0.3)}
+
+{apical_dendrite[9] connect apical_dendrite[11](0), 1}
+{access apical_dendrite[11]}
+{pt3dclear()}
+{pt3dadd(35,209,-101.5,0.7)}
+{pt3dadd(34.5,214.5,-104.5,0.6)}
+{pt3dadd(32.5,221,-104.5,0.6)}
+{pt3dadd(31.5,229.5,-100,0.6)}
+{pt3dadd(31,239.5,-103.5,0.6)}
+{pt3dadd(28.5,244.5,-104.5,0.6)}
+{pt3dadd(29,253,-105.5,0.6)}
+{pt3dadd(29.5,261,-106.5,0.6)}
+{pt3dadd(29,267.5,-104.5,0.6)}
+{pt3dadd(28,270.5,-104.5,0.6)}
+
+{apical_dendrite[11] connect apical_dendrite[12](0), 1}
+{access apical_dendrite[12]}
+{pt3dclear()}
+{pt3dadd(28,270.5,-104.5,0.6)}
+{pt3dadd(24,277,-111.5,0.4)}
+{pt3dadd(20.5,284,-110.5,0.4)}
+{pt3dadd(15.5,298,-118,0.4)}
+{pt3dadd(17,311,-117,0.4)}
+{pt3dadd(19,320,-123,0.4)}
+{pt3dadd(21,329,-128.5,0.4)}
+{pt3dadd(20,338.5,-134.5,0.4)}
+{pt3dadd(20.5,345.5,-139,0.4)}
+{pt3dadd(21,354,-133.5,0.4)}
+{pt3dadd(16,361.5,-138,0.4)}
+{pt3dadd(13,370,-139,0.4)}
+{pt3dadd(9,378,-132.5,0.4)}
+{pt3dadd(8.5,383.5,-132.5,0.4)}
+{pt3dadd(8,393,-130.5,0.4)}
+
+{apical_dendrite[11] connect apical_dendrite[13](0), 1}
+{access apical_dendrite[13]}
+{pt3dclear()}
+{pt3dadd(28,270.5,-104.5,0.6)}
+{pt3dadd(33.5,278.5,-106.5,0.4)}
+{pt3dadd(40.5,289,-109.5,0.4)}
+{pt3dadd(47.5,298,-111.5,0.4)}
+{pt3dadd(52,305.5,-110.5,0.4)}
+{pt3dadd(59,313,-119,0.4)}
+{pt3dadd(62.5,320,-119,0.4)}
+{pt3dadd(65,326,-120,0.4)}
+{pt3dadd(68,331.5,-122,0.4)}
+{pt3dadd(70,334.5,-123,0.4)}
+{pt3dadd(74,341.5,-121,0.4)}
+{pt3dadd(77,350,-122,0.4)}
+{pt3dadd(80.5,359,-126.5,0.4)}
+{pt3dadd(82,361,-123,0.4)}
+
+{apical_dendrite[13] connect apical_dendrite[14](0), 1}
+{access apical_dendrite[14]}
+{pt3dclear()}
+{pt3dadd(82,361,-123,0.4)}
+{pt3dadd(81,366.5,-124,0.4)}
+{pt3dadd(81.5,371,-123,0.4)}
+
+{apical_dendrite[13] connect apical_dendrite[15](0), 1}
+{access apical_dendrite[15]}
+{pt3dclear()}
+{pt3dadd(82,361,-123,0.4)}
+{pt3dadd(86.5,364.5,-123,0.4)}
+{pt3dadd(89,369.5,-123,0.4)}
+
+{apical_dendrite[0] connect apical_dendrite[16](0), 1}
+{access apical_dendrite[16]}
+{pt3dclear()}
+{pt3dadd(23,68.5,-80.5,2.8)}
+{pt3dadd(29.5,72.5,-91,1.7)}
+{pt3dadd(35.5,75,-91,1.3)}
+{pt3dadd(41,78,-85.5,1.1)}
+{pt3dadd(46.5,79.5,-87.5,0.8)}
+{pt3dadd(47.5,80,-86.5,0.8)}
+
+{apical_dendrite[16] connect apical_dendrite[17](0), 1}
+{access apical_dendrite[17]}
+{pt3dclear()}
+{pt3dadd(47.5,80,-86.5,0.8)}
+{pt3dadd(50,81,-87.5,0.5)}
+{pt3dadd(55,83,-94,0.5)}
+{pt3dadd(59.5,86,-100,0.5)}
+{pt3dadd(63.5,87.5,-101.5,0.5)}
+
+{apical_dendrite[17] connect apical_dendrite[18](0), 1}
+{access apical_dendrite[18]}
+{pt3dclear()}
+{pt3dadd(63.5,87.5,-101.5,0.5)}
+{pt3dadd(69.5,88,-104.5,0.5)}
+{pt3dadd(71,88,-104.5,0.5)}
+
+{apical_dendrite[18] connect apical_dendrite[19](0), 1}
+{access apical_dendrite[19]}
+{pt3dclear()}
+{pt3dadd(71,88,-104.5,0.5)}
+{pt3dadd(77,89,-107.5,0.5)}
+{pt3dadd(86.5,89.5,-105.5,0.3)}
+{pt3dadd(93.5,87.5,-108.5,0.3)}
+{pt3dadd(99.5,90.5,-109.5,0.3)}
+
+{apical_dendrite[18] connect apical_dendrite[20](0), 1}
+{access apical_dendrite[20]}
+{pt3dclear()}
+{pt3dadd(71,88,-104.5,0.5)}
+{pt3dadd(71,92,-103.5,0.3)}
+{pt3dadd(76.5,93,-102.5,0.3)}
+{pt3dadd(82,97,-109.5,0.3)}
+{pt3dadd(89.5,98.5,-110.5,0.3)}
+{pt3dadd(100,103,-109.5,0.3)}
+
+{apical_dendrite[17] connect apical_dendrite[21](0), 1}
+{access apical_dendrite[21]}
+{pt3dclear()}
+{pt3dadd(63.5,87.5,-101.5,0.5)}
+{pt3dadd(65,93.5,-102.5,0.3)}
+{pt3dadd(71.5,95.5,-98,0.3)}
+{pt3dadd(75,97.5,-112.5,0.3)}
+{pt3dadd(79,101.5,-124,0.3)}
+{pt3dadd(84.5,106,-122,0.3)}
+{pt3dadd(92.5,112,-131.5,0.3)}
+{pt3dadd(100.5,117.5,-133.5,0.3)}
+{pt3dadd(113,123,-140,0.3)}
+{pt3dadd(122,131,-151.5,0.3)}
+
+{apical_dendrite[16] connect apical_dendrite[22](0), 1}
+{access apical_dendrite[22]}
+{pt3dclear()}
+{pt3dadd(47.5,80,-86.5,0.8)}
+{pt3dadd(49,83.5,-84.5,0.5)}
+{pt3dadd(53,88,-85.5,0.5)}
+
+{apical_dendrite[22] connect apical_dendrite[23](0), 1}
+{access apical_dendrite[23]}
+{pt3dclear()}
+{pt3dadd(53,88,-85.5,0.5)}
+{pt3dadd(59,90,-85.5,0.5)}
+{pt3dadd(64,95,-84.5,0.5)}
+{pt3dadd(70.5,99.5,-83.5,0.5)}
+{pt3dadd(75.5,102,-82.5,0.5)}
+{pt3dadd(79.5,105.5,-81.5,0.5)}
+{pt3dadd(81.5,109.5,-80.5,0.3)}
+{pt3dadd(89.5,114.5,-78.5,0.3)}
+{pt3dadd(95,118,-76,0.3)}
+{pt3dadd(100,119.5,-74,0.3)}
+{pt3dadd(111,124,-74,0.3)}
+{pt3dadd(118.5,128,-75,0.3)}
+{pt3dadd(125,129,-68,0.3)}
+{pt3dadd(132.5,128.5,-66,0.3)}
+{pt3dadd(144,134,-71,0.3)}
+{pt3dadd(150,137.5,-72,0.3)}
+{pt3dadd(154.5,139.5,-68,0.3)}
+{pt3dadd(159.5,143,-68,0.3)}
+{pt3dadd(165,145,-66,0.3)}
+{pt3dadd(174.5,143.5,-71,0.3)}
+{pt3dadd(186,139.5,-75,0.3)}
+{pt3dadd(188.5,136,-76,0.3)}
+
+{apical_dendrite[22] connect apical_dendrite[24](0), 1}
+{access apical_dendrite[24]}
+{pt3dclear()}
+{pt3dadd(53,88,-85.5,0.5)}
+{pt3dadd(52,90,-83.5,0.5)}
+{pt3dadd(55,100.5,-81.5,0.4)}
+{pt3dadd(59.5,108.5,-81.5,0.4)}
+{pt3dadd(65,119,-82.5,0.4)}
+{pt3dadd(69.5,129,-82.5,0.4)}
+{pt3dadd(74,137.5,-81.5,0.4)}
+{pt3dadd(78,144.5,-81.5,0.4)}
+{pt3dadd(83.5,153,-77.5,0.4)}
+{pt3dadd(86.5,159.5,-76,0.4)}
+{pt3dadd(94,169,-70,0.4)}
+{pt3dadd(97,176.5,-74,0.4)}
+{pt3dadd(100.5,182.5,-74,0.4)}
+{pt3dadd(107.5,194,-69,0.3)}
+{pt3dadd(110,199,-71,0.3)}
+{pt3dadd(113,205.5,-70,0.3)}
+
+{soma[0] connect apical_dendrite[25](0), 1}
+{access apical_dendrite[25]}
+{pt3dclear()}
+{pt3dadd(4.062,14.938,-50.958,16.705)}
+{pt3dadd(-1,31,-57.5,5.8)}
+{pt3dadd(-4,39,-57.5,4.4)}
+{pt3dadd(-8.5,43.5,-57.5,3.7)}
+{pt3dadd(-15,51.5,-56.5,3.7)}
+{pt3dadd(-16,56.5,-56.5,3.7)}
+{pt3dadd(-18,61,-57.5,5.6)}
+{pt3dadd(-20,62.5,-56.5,5.6)}
+
+{apical_dendrite[25] connect apical_dendrite[26](0), 1}
+{access apical_dendrite[26]}
+{pt3dclear()}
+{pt3dadd(-20,62.5,-56.5,5.6)}
+{pt3dadd(-23.5,64.5,-60.5,2.2)}
+{pt3dadd(-28.5,68,-59.5,2.2)}
+{pt3dadd(-31.5,75,-57.5,2.2)}
+{pt3dadd(-35.5,79,-58.5,1.9)}
+{pt3dadd(-39,84.5,-60.5,1.9)}
+{pt3dadd(-40,88,-63.5,1.9)}
+{pt3dadd(-41.5,93.5,-63.5,1.9)}
+{pt3dadd(-41.5,98,-63.5,1.6)}
+{pt3dadd(-41.5,102.5,-63.5,1.6)}
+{pt3dadd(-43.5,108,-65,1.6)}
+{pt3dadd(-45,112,-59.5,1.6)}
+{pt3dadd(-46,116,-58.5,1.6)}
+
+{apical_dendrite[26] connect apical_dendrite[27](0), 1}
+{access apical_dendrite[27]}
+{pt3dclear()}
+{pt3dadd(-46,116,-58.5,1.6)}
+{pt3dadd(-50,121,-65,1.6)}
+{pt3dadd(-53,129,-68,1.6)}
+{pt3dadd(-54.5,131.5,-73,1.6)}
+
+{apical_dendrite[27] connect apical_dendrite[28](0), 1}
+{access apical_dendrite[28]}
+{pt3dclear()}
+{pt3dadd(-54.5,131.5,-73,1.6)}
+{pt3dadd(-54.5,133,-71,1.6)}
+
+{apical_dendrite[28] connect apical_dendrite[29](0), 1}
+{access apical_dendrite[29]}
+{pt3dclear()}
+{pt3dadd(-54.5,133,-71,1.6)}
+{pt3dadd(-56,135,-69,1.2)}
+{pt3dadd(-58.5,144.5,-70,1.2)}
+{pt3dadd(-59.5,152.5,-74,1.2)}
+{pt3dadd(-59,159.5,-76,1.2)}
+{pt3dadd(-59.5,165.5,-76,1.2)}
+{pt3dadd(-58.5,176,-71,1.2)}
+{pt3dadd(-58,182.5,-78.5,1.2)}
+
+{apical_dendrite[29] connect apical_dendrite[30](0), 1}
+{access apical_dendrite[30]}
+{pt3dclear()}
+{pt3dadd(-58,182.5,-78.5,1.2)}
+{pt3dadd(-57,189.5,-71,1.1)}
+{pt3dadd(-57,198,-73,1.1)}
+{pt3dadd(-59.5,206.5,-75,1.1)}
+{pt3dadd(-61,213,-72,1.1)}
+{pt3dadd(-61,219,-76,1.1)}
+{pt3dadd(-62,224.5,-80.5,1.1)}
+{pt3dadd(-62.5,230.5,-78.5,1.1)}
+{pt3dadd(-63,233,-78.5,1.1)}
+{pt3dadd(-63.5,237,-78.5,1.1)}
+
+{apical_dendrite[30] connect apical_dendrite[31](0), 1}
+{access apical_dendrite[31]}
+{pt3dclear()}
+{pt3dadd(-63.5,237,-78.5,1.1)}
+{pt3dadd(-61,244,-71,0.8)}
+{pt3dadd(-60.5,251,-68,0.8)}
+{pt3dadd(-60.5,256,-66,0.6)}
+{pt3dadd(-63,262,-63.5,0.6)}
+{pt3dadd(-64,270,-66,0.6)}
+{pt3dadd(-67,277.5,-66,0.6)}
+{pt3dadd(-69,283,-63.5,0.6)}
+{pt3dadd(-68.5,288,-66,0.6)}
+{pt3dadd(-68.5,292,-63.5,0.6)}
+{pt3dadd(-69,295,-61.5,0.6)}
+
+{apical_dendrite[31] connect apical_dendrite[32](0), 1}
+{access apical_dendrite[32]}
+{pt3dclear()}
+{pt3dadd(-69,295,-61.5,0.6)}
+{pt3dadd(-70.5,305.5,-59.5,0.4)}
+{pt3dadd(-73,313.5,-56.5,0.4)}
+{pt3dadd(-72.5,317.5,-57.5,0.4)}
+{pt3dadd(-74.5,325,-56.5,0.4)}
+{pt3dadd(-77.5,336.5,-57.5,0.4)}
+{pt3dadd(-79,344,-56.5,0.4)}
+{pt3dadd(-81.5,348.5,-56.5,0.4)}
+{pt3dadd(-84,353,-53.5,0.4)}
+{pt3dadd(-88.5,361,-51,0.4)}
+{pt3dadd(-90.5,367.5,-49,0.4)}
+{pt3dadd(-96.5,376,-49,0.4)}
+{pt3dadd(-99.5,383.5,-49,0.4)}
+{pt3dadd(-101.5,391,-48,0.4)}
+{pt3dadd(-102.5,398.5,-52,0.4)}
+{pt3dadd(-101,401.5,-52,0.4)}
+{pt3dadd(-102.5,409,-53.5,0.4)}
+{pt3dadd(-100,414,-51,0.4)}
+{pt3dadd(-99.5,420,-49,0.4)}
+{pt3dadd(-96.5,425,-46,0.4)}
+{pt3dadd(-94.5,432,-45,0.4)}
+{pt3dadd(-94,438.5,-42,0.4)}
+{pt3dadd(-90,445.5,-38.5,0.4)}
+{pt3dadd(-89,455,-35.5,0.4)}
+{pt3dadd(-86.5,460,-29.5,0.4)}
+{pt3dadd(-85,465.5,-24,0.4)}
+{pt3dadd(-85,471.5,-22,0.4)}
+{pt3dadd(-83.5,480,-23,0.4)}
+{pt3dadd(-81.5,482,-22,0.3)}
+{pt3dadd(-79.5,487,-20,0.3)}
+{pt3dadd(-71,492.5,-20,0.3)}
+{pt3dadd(-66,495.5,-20,0.3)}
+{pt3dadd(-60.5,501,-26,0.3)}
+{pt3dadd(-52,508.5,-25,0.3)}
+
+{apical_dendrite[31] connect apical_dendrite[33](0), 1}
+{access apical_dendrite[33]}
+{pt3dclear()}
+{pt3dadd(-69,295,-61.5,0.6)}
+{pt3dadd(-65.5,296.5,-67,0.5)}
+{pt3dadd(-62.5,304,-67,0.5)}
+{pt3dadd(-61,311.5,-63.5,0.5)}
+{pt3dadd(-60.5,319,-66,0.5)}
+{pt3dadd(-58.5,327.5,-57.5,0.5)}
+{pt3dadd(-61.5,337.5,-53.5,0.5)}
+{pt3dadd(-64,343.5,-53.5,0.5)}
+{pt3dadd(-66,354,-56.5,0.5)}
+{pt3dadd(-65,360.5,-49,0.5)}
+{pt3dadd(-65,365,-47,0.5)}
+{pt3dadd(-64,367,-52,0.5)}
+
+{apical_dendrite[33] connect apical_dendrite[34](0), 1}
+{access apical_dendrite[34]}
+{pt3dclear()}
+{pt3dadd(-64,367,-52,0.5)}
+{pt3dadd(-69,369.5,-53.5,0.4)}
+{pt3dadd(-71.5,373.5,-57.5,0.4)}
+{pt3dadd(-74.5,382,-60.5,0.4)}
+{pt3dadd(-77,390.5,-63.5,0.4)}
+{pt3dadd(-80,403,-70,0.3)}
+{pt3dadd(-82.5,410.5,-75,0.3)}
+{pt3dadd(-84.5,418.5,-72,0.3)}
+{pt3dadd(-83,425,-75,0.3)}
+{pt3dadd(-82.5,430.5,-77.5,0.3)}
+{pt3dadd(-80.5,436,-79.5,0.3)}
+
+{apical_dendrite[33] connect apical_dendrite[35](0), 1}
+{access apical_dendrite[35]}
+{pt3dclear()}
+{pt3dadd(-64,367,-52,0.5)}
+{pt3dadd(-65,373,-50,0.4)}
+{pt3dadd(-66,380,-45,0.4)}
+{pt3dadd(-67,386.5,-47,0.4)}
+{pt3dadd(-67,388,-46,0.4)}
+{pt3dadd(-68.5,394,-46,0.4)}
+{pt3dadd(-70.5,405,-38.5,0.4)}
+{pt3dadd(-70,410.5,-35.5,0.4)}
+{pt3dadd(-70.5,420.5,-37.5,0.4)}
+{pt3dadd(-70,428.5,-29.5,0.4)}
+{pt3dadd(-67.5,441,-33.5,0.4)}
+{pt3dadd(-64.5,449.5,-33.5,0.4)}
+{pt3dadd(-63.5,459,-28.5,0.4)}
+{pt3dadd(-61.5,464,-31.5,0.4)}
+{pt3dadd(-58.5,472,-32.5,0.4)}
+{pt3dadd(-51.5,483,-23,0.4)}
+{pt3dadd(-51,486.5,-24,0.4)}
+{pt3dadd(-48.5,491.5,-17,0.3)}
+{pt3dadd(-44.5,501,-14.5,0.3)}
+{pt3dadd(-44.5,501,-15.5,0.3)}
+
+{apical_dendrite[30] connect apical_dendrite[36](0), 1}
+{access apical_dendrite[36]}
+{pt3dclear()}
+{pt3dadd(-63.5,237,-78.5,1.1)}
+{pt3dadd(-66.5,247,-87.5,0.5)}
+{pt3dadd(-68.5,258,-92,0.5)}
+{pt3dadd(-69.5,262,-94,0.5)}
+{pt3dadd(-64.5,270,-95,0.5)}
+{pt3dadd(-63,274,-96,0.5)}
+{pt3dadd(-58.5,283,-92,0.5)}
+{pt3dadd(-58.5,291.5,-98,0.5)}
+{pt3dadd(-59.5,301.5,-100,0.5)}
+{pt3dadd(-60.5,308.5,-96,0.5)}
+{pt3dadd(-60,316,-97,0.5)}
+{pt3dadd(-60.5,323,-97,0.5)}
+{pt3dadd(-62,328,-97,0.5)}
+{pt3dadd(-62,337,-97,0.5)}
+{pt3dadd(-60.5,343.5,-96,0.5)}
+{pt3dadd(-60.5,347,-97,0.5)}
+{pt3dadd(-58.5,349,-97,0.5)}
+
+{apical_dendrite[36] connect apical_dendrite[37](0), 1}
+{access apical_dendrite[37]}
+{pt3dclear()}
+{pt3dadd(-58.5,349,-97,0.5)}
+{pt3dadd(-59.5,354,-94,0.4)}
+{pt3dadd(-58.5,361,-93,0.4)}
+{pt3dadd(-59,367,-92,0.4)}
+{pt3dadd(-59,373,-91,0.4)}
+{pt3dadd(-62,380,-91,0.4)}
+{pt3dadd(-61.5,387.5,-91,0.4)}
+{pt3dadd(-61,395.5,-93,0.4)}
+{pt3dadd(-61.5,400,-94,0.4)}
+{pt3dadd(-59,405.5,-93,0.4)}
+{pt3dadd(-59,414.5,-93,0.4)}
+{pt3dadd(-58,426,-95,0.4)}
+{pt3dadd(-57.5,443,-93,0.4)}
+{pt3dadd(-55.5,452.5,-95,0.3)}
+{pt3dadd(-52,467,-89,0.3)}
+{pt3dadd(-49.5,472,-84.5,0.3)}
+{pt3dadd(-45,481,-85.5,0.3)}
+{pt3dadd(-38,485,-85.5,0.3)}
+
+{apical_dendrite[36] connect apical_dendrite[38](0), 1}
+{access apical_dendrite[38]}
+{pt3dclear()}
+{pt3dadd(-58.5,349,-97,0.5)}
+{pt3dadd(-54.5,355.5,-99,0.3)}
+{pt3dadd(-50.5,367.5,-97,0.3)}
+{pt3dadd(-47,377.5,-102.5,0.3)}
+{pt3dadd(-46.5,383.5,-104.5,0.3)}
+{pt3dadd(-45.5,387,-99,0.3)}
+
+{apical_dendrite[29] connect apical_dendrite[39](0), 1}
+{access apical_dendrite[39]}
+{pt3dclear()}
+{pt3dadd(-58,182.5,-78.5,1.2)}
+{pt3dadd(-63.5,184,-75,0.3)}
+{pt3dadd(-64,187.5,-75,0.3)}
+{pt3dadd(-65.5,188.5,-78.5,0.3)}
+
+{apical_dendrite[28] connect apical_dendrite[40](0), 1}
+{access apical_dendrite[40]}
+{pt3dclear()}
+{pt3dadd(-54.5,133,-71,1.6)}
+{pt3dadd(-59,128.5,-75,0.3)}
+{pt3dadd(-62.5,129.5,-74,0.3)}
+{pt3dadd(-66.5,128.5,-72,0.3)}
+{pt3dadd(-71.5,129.5,-80.5,0.3)}
+{pt3dadd(-76,130.5,-82.5,0.3)}
+{pt3dadd(-79,132.5,-84.5,0.3)}
+{pt3dadd(-82,134,-81.5,0.3)}
+
+{apical_dendrite[27] connect apical_dendrite[41](0), 1}
+{access apical_dendrite[41]}
+{pt3dclear()}
+{pt3dadd(-54.5,131.5,-73,1.6)}
+{pt3dadd(-51.5,133,-76,0.3)}
+{pt3dadd(-50.5,136.5,-77.5,0.3)}
+{pt3dadd(-48,140.5,-74,0.3)}
+{pt3dadd(-48,147,-81.5,0.3)}
+{pt3dadd(-47.5,154.5,-86.5,0.3)}
+{pt3dadd(-46.5,160.5,-84.5,0.3)}
+{pt3dadd(-46.5,163.5,-87.5,0.3)}
+
+{apical_dendrite[41] connect apical_dendrite[42](0), 1}
+{access apical_dendrite[42]}
+{pt3dclear()}
+{pt3dadd(-46.5,163.5,-87.5,0.3)}
+{pt3dadd(-50,169.5,-90,0.3)}
+{pt3dadd(-53,174,-93,0.3)}
+{pt3dadd(-55.5,180,-94,0.3)}
+{pt3dadd(-56,182,-100,0.3)}
+
+{apical_dendrite[41] connect apical_dendrite[43](0), 1}
+{access apical_dendrite[43]}
+{pt3dclear()}
+{pt3dadd(-46.5,163.5,-87.5,0.3)}
+{pt3dadd(-43.5,167.5,-79.5,0.3)}
+{pt3dadd(-41.5,173.5,-86.5,0.3)}
+{pt3dadd(-41.5,180.5,-89,0.3)}
+{pt3dadd(-40.5,183.5,-91,0.3)}
+{pt3dadd(-42,188,-91,0.3)}
+{pt3dadd(-44.5,193,-90,0.3)}
+
+{apical_dendrite[26] connect apical_dendrite[44](0), 1}
+{access apical_dendrite[44]}
+{pt3dclear()}
+{pt3dadd(-46,116,-58.5,1.6)}
+{pt3dadd(-53.5,109.5,-62.5,0.3)}
+{pt3dadd(-60,111.5,-62.5,0.3)}
+{pt3dadd(-64.5,114.5,-54.5,0.3)}
+
+{apical_dendrite[44] connect apical_dendrite[45](0), 1}
+{access apical_dendrite[45]}
+{pt3dclear()}
+{pt3dadd(-64.5,114.5,-54.5,0.3)}
+{pt3dadd(-69,113,-57.5,0.3)}
+{pt3dadd(-75.5,113,-58.5,0.3)}
+{pt3dadd(-81.5,115.5,-60.5,0.3)}
+{pt3dadd(-85.5,117.5,-62.5,0.3)}
+{pt3dadd(-90,120.5,-61.5,0.3)}
+{pt3dadd(-95.5,122,-60.5,0.3)}
+{pt3dadd(-102.5,124,-60.5,0.3)}
+{pt3dadd(-106.5,125.5,-67,0.3)}
+{pt3dadd(-112.5,126,-67,0.3)}
+{pt3dadd(-116.5,126,-69,0.3)}
+{pt3dadd(-125,128.5,-62.5,0.3)}
+{pt3dadd(-128,131.5,-57.5,0.3)}
+{pt3dadd(-139.5,137.5,-58.5,0.3)}
+{pt3dadd(-144,140,-59.5,0.3)}
+
+{apical_dendrite[44] connect apical_dendrite[46](0), 1}
+{access apical_dendrite[46]}
+{pt3dclear()}
+{pt3dadd(-64.5,114.5,-54.5,0.3)}
+{pt3dadd(-63,118.5,-57.5,0.3)}
+{pt3dadd(-67,120.5,-57.5,0.3)}
+{pt3dadd(-72,124,-56.5,0.3)}
+{pt3dadd(-73.5,126,-48,0.3)}
+{pt3dadd(-79.5,129.5,-43,0.3)}
+{pt3dadd(-87.5,135,-38.5,0.3)}
+{pt3dadd(-91,139.5,-30.5,0.3)}
+{pt3dadd(-96.5,144.5,-26,0.3)}
+{pt3dadd(-99,151,-21,0.3)}
+{pt3dadd(-100.5,155.5,-17,0.3)}
+{pt3dadd(-101.5,163.5,-12.5,0.3)}
+{pt3dadd(-101.5,170.5,-21,0.3)}
+{pt3dadd(-102.5,175.5,-20,0.3)}
+
+{apical_dendrite[25] connect apical_dendrite[47](0), 1}
+{access apical_dendrite[47]}
+{pt3dclear()}
+{pt3dadd(-20,62.5,-56.5,5.6)}
+{pt3dadd(-16.5,62.5,-55.5,6.7)}
+
+{apical_dendrite[47] connect apical_dendrite[48](0), 1}
+{access apical_dendrite[48]}
+{pt3dclear()}
+{pt3dadd(-16.5,62.5,-55.5,6.7)}
+{pt3dadd(-21.5,68,-55.5,1.5)}
+{pt3dadd(-24.5,73.5,-57.5,1.5)}
+{pt3dadd(-25.5,82.5,-61.5,1.5)}
+{pt3dadd(-25.5,87.5,-55.5,1.5)}
+{pt3dadd(-26,93,-54.5,1.5)}
+{pt3dadd(-25.5,97,-49,1.5)}
+
+{apical_dendrite[48] connect apical_dendrite[49](0), 1}
+{access apical_dendrite[49]}
+{pt3dclear()}
+{pt3dadd(-25.5,97,-49,1.5)}
+{pt3dadd(-30,103.5,-50,0.5)}
+{pt3dadd(-31.5,106,-44,0.5)}
+{pt3dadd(-32,110.5,-41,0.5)}
+{pt3dadd(-35.5,120,-39.5,0.5)}
+{pt3dadd(-34.5,122.5,-36.5,0.5)}
+{pt3dadd(-39,127,-31.5,0.5)}
+{pt3dadd(-44,131.5,-25,0.5)}
+{pt3dadd(-47,135.5,-21,0.5)}
+{pt3dadd(-48.5,140,-22,0.5)}
+{pt3dadd(-51,146,-15.5,0.5)}
+{pt3dadd(-55.5,150.5,-10.5,0.5)}
+{pt3dadd(-55.5,153.5,-5.5,0.5)}
+{pt3dadd(-57,156,-6.5,0.5)}
+{pt3dadd(-59,161.5,-6.5,0.5)}
+{pt3dadd(-64,166.5,-4.5,0.5)}
+{pt3dadd(-66,172.5,0,0.5)}
+{pt3dadd(-68,181,3.5,0.5)}
+{pt3dadd(-67.5,186,11,0.5)}
+{pt3dadd(-71,190.5,15,0.5)}
+{pt3dadd(-77,195,16,0.5)}
+{pt3dadd(-81,198,21.5,0.5)}
+{pt3dadd(-88,202.5,19,0.5)}
+
+{apical_dendrite[48] connect apical_dendrite[50](0), 1}
+{access apical_dendrite[50]}
+{pt3dclear()}
+{pt3dadd(-25.5,97,-49,1.5)}
+{pt3dadd(-25.5,107,-54.5,1.2)}
+{pt3dadd(-28,110,-54.5,1.2)}
+{pt3dadd(-31.5,118.5,-53.5,1)}
+{pt3dadd(-35,126.5,-53.5,1)}
+{pt3dadd(-35.5,134,-57.5,1)}
+{pt3dadd(-36,140,-57.5,1)}
+{pt3dadd(-37.5,145,-56.5,1)}
+{pt3dadd(-36.5,146.5,-56.5,1)}
+
+{apical_dendrite[50] connect apical_dendrite[51](0), 1}
+{access apical_dendrite[51]}
+{pt3dclear()}
+{pt3dadd(-36.5,146.5,-56.5,1)}
+{pt3dadd(-42,147,-59.5,0.5)}
+{pt3dadd(-49,150.5,-54.5,0.5)}
+{pt3dadd(-52,152.5,-53.5,0.5)}
+{pt3dadd(-58,155.5,-45,0.5)}
+{pt3dadd(-62.5,160,-44,0.5)}
+{pt3dadd(-66,162,-39.5,0.5)}
+{pt3dadd(-71.5,167,-30.5,0.5)}
+{pt3dadd(-75.5,171,-27,0.5)}
+{pt3dadd(-81,176.5,-25,0.5)}
+{pt3dadd(-80.5,182,-18,0.5)}
+{pt3dadd(-83,183.5,-11.5,0.5)}
+{pt3dadd(-88.5,186.5,-6.5,0.5)}
+{pt3dadd(-93.5,193,0,0.5)}
+{pt3dadd(-102.5,198.5,-1,0.5)}
+{pt3dadd(-107,203,0,0.5)}
+{pt3dadd(-111,206.5,7.5,0.5)}
+{pt3dadd(-114.5,211.5,-2,0.5)}
+{pt3dadd(-115,214,1.5,0.5)}
+
+{apical_dendrite[50] connect apical_dendrite[52](0), 1}
+{access apical_dendrite[52]}
+{pt3dclear()}
+{pt3dadd(-36.5,146.5,-56.5,1)}
+{pt3dadd(-38.5,153.5,-58.5,0.8)}
+{pt3dadd(-37.5,158.5,-55.5,0.8)}
+{pt3dadd(-37,163.5,-55.5,0.8)}
+{pt3dadd(-36,168,-55.5,0.8)}
+{pt3dadd(-35,174.5,-55.5,0.8)}
+{pt3dadd(-34,179,-55.5,0.8)}
+{pt3dadd(-33,190.5,-59.5,0.8)}
+{pt3dadd(-31,195.5,-59.5,0.8)}
+{pt3dadd(-32,205,-59.5,0.8)}
+{pt3dadd(-32.5,210.5,-54.5,0.8)}
+{pt3dadd(-33,213.5,-53.5,0.8)}
+{pt3dadd(-34,217,-51,0.8)}
+
+{apical_dendrite[52] connect apical_dendrite[53](0), 1}
+{access apical_dendrite[53]}
+{pt3dclear()}
+{pt3dadd(-34,217,-51,0.8)}
+{pt3dadd(-35,220.5,-58.5,0.6)}
+{pt3dadd(-38,229,-63.5,0.6)}
+{pt3dadd(-40,233.5,-62.5,0.6)}
+{pt3dadd(-42,240.5,-69,0.6)}
+{pt3dadd(-41,244,-70,0.6)}
+{pt3dadd(-41.5,249.5,-75,0.6)}
+{pt3dadd(-42.5,255.5,-79.5,0.6)}
+{pt3dadd(-44.5,262.5,-81.5,0.6)}
+{pt3dadd(-47.5,272.5,-83.5,0.6)}
+
+{apical_dendrite[53] connect apical_dendrite[54](0), 1}
+{access apical_dendrite[54]}
+{pt3dclear()}
+{pt3dadd(-47.5,272.5,-83.5,0.6)}
+{pt3dadd(-48.5,278.5,-90,0.4)}
+{pt3dadd(-54,285.5,-94,0.4)}
+{pt3dadd(-54.5,294,-95,0.4)}
+{pt3dadd(-52.5,307,-101.5,0.4)}
+{pt3dadd(-54,315,-105.5,0.4)}
+{pt3dadd(-52.5,322.5,-106.5,0.4)}
+{pt3dadd(-56.5,330.5,-107.5,0.4)}
+{pt3dadd(-59.5,341.5,-116,0.4)}
+{pt3dadd(-61.5,347.5,-115,0.4)}
+{pt3dadd(-63.5,356,-117,0.4)}
+{pt3dadd(-67.5,371.5,-112.5,0.4)}
+{pt3dadd(-68.5,382.5,-114,0.4)}
+{pt3dadd(-70,392,-115,0.4)}
+{pt3dadd(-72,402.5,-114,0.4)}
+{pt3dadd(-75.5,411,-121,0.4)}
+{pt3dadd(-80,419.5,-118,0.4)}
+{pt3dadd(-87,429,-119,0.3)}
+{pt3dadd(-91.5,435,-114,0.3)}
+{pt3dadd(-96,440.5,-112.5,0.3)}
+
+{apical_dendrite[53] connect apical_dendrite[55](0), 1}
+{access apical_dendrite[55]}
+{pt3dclear()}
+{pt3dadd(-47.5,272.5,-83.5,0.6)}
+{pt3dadd(-44.5,279,-83.5,0.3)}
+{pt3dadd(-45.5,284,-93,0.3)}
+{pt3dadd(-46.5,290,-95,0.3)}
+{pt3dadd(-46.5,298.5,-103.5,0.3)}
+{pt3dadd(-46.5,304,-111.5,0.3)}
+{pt3dadd(-48,315.5,-115,0.3)}
+
+{apical_dendrite[55] connect apical_dendrite[56](0), 1}
+{access apical_dendrite[56]}
+{pt3dclear()}
+{pt3dadd(-48,315.5,-115,0.3)}
+{pt3dadd(-43.5,319.5,-115,0.3)}
+{pt3dadd(-39,320,-112.5,0.3)}
+{pt3dadd(-31,327,-115,0.3)}
+{pt3dadd(-17.5,328.5,-117,0.3)}
+{pt3dadd(-13.5,332.5,-109.5,0.3)}
+
+{apical_dendrite[55] connect apical_dendrite[57](0), 1}
+{access apical_dendrite[57]}
+{pt3dclear()}
+{pt3dadd(-48,315.5,-115,0.3)}
+{pt3dadd(-48,322.5,-112.5,0.3)}
+{pt3dadd(-49,333.5,-114,0.3)}
+{pt3dadd(-48.5,338,-94,0.3)}
+
+{apical_dendrite[52] connect apical_dendrite[58](0), 1}
+{access apical_dendrite[58]}
+{pt3dclear()}
+{pt3dadd(-34,217,-51,0.8)}
+{pt3dadd(-32,222.5,-50,0.5)}
+{pt3dadd(-34,228,-51,0.5)}
+{pt3dadd(-35.5,238,-42,0.5)}
+{pt3dadd(-34.5,251.5,-42,0.5)}
+{pt3dadd(-35.5,256,-35.5,0.5)}
+{pt3dadd(-36,267.5,-31.5,0.5)}
+{pt3dadd(-37.5,272,-31.5,0.5)}
+{pt3dadd(-36,277,-26,0.5)}
+{pt3dadd(-35.5,286.5,-26,0.5)}
+{pt3dadd(-35.5,291,-25,0.5)}
+{pt3dadd(-34,299.5,-24,0.5)}
+{pt3dadd(-31,310.5,-28.5,0.5)}
+{pt3dadd(-30.5,317,-32.5,0.5)}
+{pt3dadd(-29.5,319,-35.5,0.5)}
+{pt3dadd(-28,326,-37.5,0.5)}
+{pt3dadd(-27,329,-42,0.5)}
+{pt3dadd(-26.5,335,-46,0.5)}
+{pt3dadd(-27.5,341.5,-39.5,0.5)}
+{pt3dadd(-27.5,347,-37.5,0.5)}
+{pt3dadd(-28.5,352.5,-35.5,0.5)}
+{pt3dadd(-28.5,359,-34.5,0.5)}
+{pt3dadd(-28,366.5,-32.5,0.5)}
+{pt3dadd(-28,377,-39.5,0.5)}
+{pt3dadd(-26.5,380,-38.5,0.5)}
+{pt3dadd(-27,384.5,-36.5,0.5)}
+
+{apical_dendrite[58] connect apical_dendrite[59](0), 1}
+{access apical_dendrite[59]}
+{pt3dclear()}
+{pt3dadd(-27,384.5,-36.5,0.5)}
+{pt3dadd(-25.5,389,-39.5,0.5)}
+{pt3dadd(-23,398.5,-43,0.5)}
+{pt3dadd(-21.5,402,-44,0.5)}
+{pt3dadd(-21.5,407,-41,0.5)}
+{pt3dadd(-18.5,414.5,-41,0.5)}
+{pt3dadd(-14,425,-41,0.4)}
+{pt3dadd(-12.5,435,-46,0.4)}
+{pt3dadd(-9.5,440.5,-42,0.4)}
+{pt3dadd(-10,442,-42,0.4)}
+
+{apical_dendrite[59] connect apical_dendrite[60](0), 1}
+{access apical_dendrite[60]}
+{pt3dclear()}
+{pt3dadd(-10,442,-42,0.4)}
+{pt3dadd(-9.5,447,-42,0.3)}
+{pt3dadd(-9.5,458.5,-42,0.3)}
+{pt3dadd(-10,470.5,-44,0.3)}
+{pt3dadd(-10,476.5,-46,0.3)}
+
+{apical_dendrite[59] connect apical_dendrite[61](0), 1}
+{access apical_dendrite[61]}
+{pt3dclear()}
+{pt3dadd(-10,442,-42,0.4)}
+{pt3dadd(-6.5,446.5,-43,0.3)}
+{pt3dadd(-5,449.5,-43,0.3)}
+{pt3dadd(-2.5,456,-38.5,0.3)}
+{pt3dadd(-1,463,-36.5,0.3)}
+{pt3dadd(-0.5,471,-37.5,0.3)}
+{pt3dadd(0.5,481.5,-39.5,0.3)}
+{pt3dadd(1.5,486.5,-43,0.3)}
+
+{apical_dendrite[58] connect apical_dendrite[62](0), 1}
+{access apical_dendrite[62]}
+{pt3dclear()}
+{pt3dadd(-27,384.5,-36.5,0.5)}
+{pt3dadd(-23,389.5,-42,0.3)}
+{pt3dadd(-20.5,393,-42,0.3)}
+{pt3dadd(-19,396,-39.5,0.3)}
+{pt3dadd(-19.5,399.5,-44,0.3)}
+{pt3dadd(-17,405.5,-42,0.3)}
+{pt3dadd(-14,411.5,-41,0.3)}
+
+{apical_dendrite[47] connect apical_dendrite[63](0), 1}
+{access apical_dendrite[63]}
+{pt3dclear()}
+{pt3dadd(-16.5,62.5,-55.5,6.7)}
+{pt3dadd(-14,68.5,-65,1.1)}
+{pt3dadd(-15,77,-61.5,1.1)}
+{pt3dadd(-16,85,-60.5,1.1)}
+{pt3dadd(-14,93.5,-67,1.1)}
+{pt3dadd(-14.5,98,-69,1.1)}
+{pt3dadd(-12.5,105,-76,1.1)}
+{pt3dadd(-12,106,-72,1.1)}
+
+{apical_dendrite[63] connect apical_dendrite[64](0), 1}
+{access apical_dendrite[64]}
+{pt3dclear()}
+{pt3dadd(-12,106,-72,1.1)}
+{pt3dadd(-14.5,112.5,-83.5,0.5)}
+{pt3dadd(-22,118.5,-83.5,0.5)}
+{pt3dadd(-30,128,-86.5,0.5)}
+{pt3dadd(-32,131.5,-86.5,0.5)}
+{pt3dadd(-35.5,139,-91,0.5)}
+{pt3dadd(-39,144.5,-99,0.5)}
+{pt3dadd(-45,154,-102.5,0.5)}
+{pt3dadd(-50,157.5,-102.5,0.5)}
+{pt3dadd(-56,161.5,-100,0.5)}
+{pt3dadd(-60,160,-107.5,0.5)}
+{pt3dadd(-65,163.5,-107.5,0.5)}
+{pt3dadd(-65,163.5,-108.5,0.5)}
+
+{apical_dendrite[63] connect apical_dendrite[65](0), 1}
+{access apical_dendrite[65]}
+{pt3dclear()}
+{pt3dadd(-12,106,-72,1.1)}
+{pt3dadd(-8.5,114.5,-73,0.6)}
+{pt3dadd(-7.5,124.5,-75,0.6)}
+{pt3dadd(-7,130.5,-80.5,0.6)}
+{pt3dadd(-6.5,137.5,-78.5,0.6)}
+{pt3dadd(-6,141.5,-77.5,0.6)}
+{pt3dadd(-6,147.5,-75,0.6)}
+{pt3dadd(-5.5,150.5,-77.5,0.6)}
+
+{apical_dendrite[65] connect apical_dendrite[66](0), 1}
+{access apical_dendrite[66]}
+{pt3dclear()}
+{pt3dadd(-5.5,150.5,-77.5,0.6)}
+{pt3dadd(-1,159.5,-81.5,0.3)}
+{pt3dadd(6,172,-87.5,0.3)}
+{pt3dadd(9,176,-89,0.3)}
+{pt3dadd(15.5,186,-85.5,0.3)}
+{pt3dadd(18,194.5,-93,0.3)}
+{pt3dadd(21.5,201,-94,0.3)}
+{pt3dadd(27,207.5,-91,0.3)}
+{pt3dadd(30.5,214.5,-87.5,0.3)}
+{pt3dadd(41.5,230,-82.5,0.3)}
+{pt3dadd(47,237,-80.5,0.3)}
+
+{apical_dendrite[65] connect apical_dendrite[67](0), 1}
+{access apical_dendrite[67]}
+{pt3dclear()}
+{pt3dadd(-5.5,150.5,-77.5,0.6)}
+{pt3dadd(-5,160,-78.5,0.7)}
+{pt3dadd(-2.5,170.5,-81.5,0.7)}
+{pt3dadd(0,180,-83.5,0.7)}
+{pt3dadd(2,188,-84.5,0.7)}
+{pt3dadd(5,199.5,-86.5,0.7)}
+
+{apical_dendrite[67] connect apical_dendrite[68](0), 1}
+{access apical_dendrite[68]}
+{pt3dclear()}
+{pt3dadd(5,199.5,-86.5,0.7)}
+{pt3dadd(8.5,204.5,-86.5,0.3)}
+{pt3dadd(10,211,-94,0.3)}
+{pt3dadd(11.5,217,-97,0.3)}
+{pt3dadd(10,223,-102.5,0.3)}
+{pt3dadd(13,240.5,-101.5,0.3)}
+{pt3dadd(16,247,-106.5,0.3)}
+{pt3dadd(19,257,-105.5,0.3)}
+{pt3dadd(20,264,-114,0.3)}
+{pt3dadd(22,270,-116,0.3)}
+{pt3dadd(25.5,278.5,-117,0.3)}
+{pt3dadd(33,292,-122,0.3)}
+{pt3dadd(38.5,302.5,-126.5,0.3)}
+{pt3dadd(39.5,311.5,-129.5,0.3)}
+{pt3dadd(43,316,-128.5,0.3)}
+{pt3dadd(49,328.5,-131.5,0.3)}
+{pt3dadd(53.5,338.5,-136.5,0.3)}
+{pt3dadd(53,339,-131.5,0.3)}
+
+{apical_dendrite[68] connect apical_dendrite[69](0), 1}
+{access apical_dendrite[69]}
+{pt3dclear()}
+{pt3dadd(53,339,-131.5,0.3)}
+{pt3dadd(56.5,350,-130.5,0.3)}
+{pt3dadd(59,359.5,-121,0.3)}
+{pt3dadd(63.5,370.5,-123,0.3)}
+{pt3dadd(63.5,371,-122,0.3)}
+
+{apical_dendrite[69] connect apical_dendrite[70](0), 1}
+{access apical_dendrite[70]}
+{pt3dclear()}
+{pt3dadd(63.5,371,-122,0.3)}
+{pt3dadd(65.5,378,-120,0.3)}
+{pt3dadd(70,386,-123,0.3)}
+{pt3dadd(72.5,391,-119,0.3)}
+
+{apical_dendrite[69] connect apical_dendrite[71](0), 1}
+{access apical_dendrite[71]}
+{pt3dclear()}
+{pt3dadd(63.5,371,-122,0.3)}
+{pt3dadd(67.5,374,-118,0.3)}
+{pt3dadd(77,374,-121,0.3)}
+{pt3dadd(79.5,375.5,-121,0.3)}
+
+{apical_dendrite[68] connect apical_dendrite[72](0), 1}
+{access apical_dendrite[72]}
+{pt3dclear()}
+{pt3dadd(53,339,-131.5,0.3)}
+{pt3dadd(58.5,343.5,-133.5,0.3)}
+{pt3dadd(63,349.5,-135.5,0.3)}
+{pt3dadd(66,352.5,-134.5,0.3)}
+{pt3dadd(71.5,357.5,-138,0.3)}
+{pt3dadd(80,366.5,-147,0.3)}
+{pt3dadd(86.5,373,-147,0.3)}
+
+{apical_dendrite[67] connect apical_dendrite[73](0), 1}
+{access apical_dendrite[73]}
+{pt3dclear()}
+{pt3dadd(5,199.5,-86.5,0.7)}
+{pt3dadd(3,207.5,-89,0.5)}
+{pt3dadd(1,215.5,-89,0.5)}
+{pt3dadd(0.5,222,-90,0.5)}
+{pt3dadd(3.5,235,-90,0.5)}
+{pt3dadd(3,241.5,-92,0.5)}
+{pt3dadd(2.5,256,-85.5,0.5)}
+{pt3dadd(3.5,264,-89,0.5)}
+{pt3dadd(3,272,-86.5,0.5)}
+{pt3dadd(0,281,-85.5,0.5)}
+{pt3dadd(-1,288,-85.5,0.5)}
+{pt3dadd(-1,297.5,-85.5,0.5)}
+{pt3dadd(-0.5,304.5,-85.5,0.5)}
+{pt3dadd(0.5,309,-86.5,0.5)}
+
+{apical_dendrite[73] connect apical_dendrite[74](0), 1}
+{access apical_dendrite[74]}
+{pt3dclear()}
+{pt3dadd(0.5,309,-86.5,0.5)}
+{pt3dadd(-2,317,-83.5,0.3)}
+{pt3dadd(-1,328.5,-83.5,0.3)}
+{pt3dadd(-2,344,-80.5,0.3)}
+{pt3dadd(-1,347,-80.5,0.3)}
+{pt3dadd(-1.5,357,-81.5,0.3)}
+{pt3dadd(-2,365,-81.5,0.3)}
+{pt3dadd(-1.5,376.5,-77.5,0.3)}
+{pt3dadd(-3.5,384.5,-75,0.3)}
+{pt3dadd(-8,396,-76,0.3)}
+{pt3dadd(-15,405,-76,0.3)}
+{pt3dadd(-21,417,-70,0.3)}
+{pt3dadd(-25,418.5,-70,0.3)}
+{pt3dadd(-30,428,-67,0.3)}
+{pt3dadd(-32,437.5,-63.5,0.3)}
+{pt3dadd(-38,446.5,-61.5,0.3)}
+{pt3dadd(-39.5,451.5,-60.5,0.3)}
+{pt3dadd(-35,459.5,-69,0.3)}
+{pt3dadd(-33.5,464,-74,0.3)}
+{pt3dadd(-31,471,-73,0.3)}
+{pt3dadd(-30,475,-71,0.3)}
+{pt3dadd(-28.5,476,-71,0.3)}
+
+{apical_dendrite[73] connect apical_dendrite[75](0), 1}
+{access apical_dendrite[75]}
+{pt3dclear()}
+{pt3dadd(0.5,309,-86.5,0.5)}
+{pt3dadd(5,313.5,-86.5,0.3)}
+{pt3dadd(9,321,-93,0.3)}
+{pt3dadd(13,329.5,-94,0.3)}
+{pt3dadd(14.5,338.5,-89,0.3)}
+{pt3dadd(16.5,346.5,-89,0.3)}
+{pt3dadd(21,355.5,-89,0.3)}
+{pt3dadd(25.5,364,-85.5,0.3)}
+{pt3dadd(31,374,-85.5,0.3)}
+{pt3dadd(34,382,-86.5,0.3)}
+{pt3dadd(37,390,-82.5,0.3)}
+{pt3dadd(42.5,397,-82.5,0.3)}
+{pt3dadd(43.5,398.5,-82.5,0.3)}
+
+{soma[0] connect dendrite[0](0), 1}
+{access dendrite[0]}
+{pt3dclear()}
+{pt3dadd(4.062,14.938,-50.958,16.705)}
+{pt3dadd(8,-1.5,-58.5,4.2)}
+{pt3dadd(10,-7.5,-62.5,4.2)}
+{pt3dadd(14,-11.5,-61.5,4.2)}
+
+{dendrite[0] connect dendrite[1](0), 1}
+{access dendrite[1]}
+{pt3dclear()}
+{pt3dadd(14,-11.5,-61.5,4.2)}
+{pt3dadd(14,-17,-59.5,2.2)}
+{pt3dadd(14,-20,-62.5,2.2)}
+
+{dendrite[1] connect dendrite[2](0), 1}
+{access dendrite[2]}
+{pt3dclear()}
+{pt3dadd(14,-20,-62.5,2.2)}
+{pt3dadd(9.5,-28,-62.5,0.7)}
+{pt3dadd(7,-32.5,-62.5,0.7)}
+{pt3dadd(5,-38,-62.5,0.7)}
+{pt3dadd(3.5,-41.5,-62.5,0.7)}
+{pt3dadd(2.5,-44,-62.5,0.7)}
+{pt3dadd(2,-52.5,-62.5,0.7)}
+{pt3dadd(0.5,-60.5,-62.5,0.7)}
+{pt3dadd(-1,-62,-62.5,0.7)}
+{pt3dadd(-1.5,-70,-62.5,0.7)}
+{pt3dadd(-1,-77.5,-62.5,0.7)}
+{pt3dadd(-2.5,-81.5,-62.5,0.4)}
+
+{dendrite[2] connect dendrite[3](0), 1}
+{access dendrite[3]}
+{pt3dclear()}
+{pt3dadd(-2.5,-81.5,-62.5,0.4)}
+{pt3dadd(-6.5,-89,-58.5,0.4)}
+{pt3dadd(-10.5,-96.5,-58.5,0.4)}
+{pt3dadd(-14,-105.5,-58.5,0.4)}
+{pt3dadd(-16,-109.5,-62.5,0.4)}
+{pt3dadd(-19,-118,-62.5,0.4)}
+{pt3dadd(-22,-123,-62.5,0.4)}
+{pt3dadd(-25,-129.5,-62.5,0.4)}
+{pt3dadd(-26.5,-134,-62.5,0.4)}
+{pt3dadd(-28,-140,-62.5,0.4)}
+{pt3dadd(-31.5,-143.5,-62.5,0.4)}
+{pt3dadd(-33.5,-148.5,-62.5,0.4)}
+{pt3dadd(-34,-150.5,-61.5,0.4)}
+{pt3dadd(-38,-157,-66,0.4)}
+{pt3dadd(-40,-162.5,-66,0.4)}
+{pt3dadd(-41.5,-166.5,-70,0.4)}
+{pt3dadd(-43,-171,-71,0.3)}
+{pt3dadd(-42.5,-175,-71,0.3)}
+
+{dendrite[2] connect dendrite[4](0), 1}
+{access dendrite[4]}
+{pt3dclear()}
+{pt3dadd(-2.5,-81.5,-62.5,0.4)}
+{pt3dadd(-5,-92.5,-57.5,0.4)}
+{pt3dadd(-5.5,-99,-57.5,0.4)}
+{pt3dadd(-5.5,-113,-57.5,0.4)}
+{pt3dadd(-4.5,-123.5,-54.5,0.4)}
+{pt3dadd(-4,-133.5,-51,0.4)}
+{pt3dadd(-5,-143,-50,0.4)}
+{pt3dadd(-6,-153.5,-49,0.4)}
+{pt3dadd(-7,-159,-54.5,0.4)}
+{pt3dadd(-6.5,-169.5,-57.5,0.4)}
+{pt3dadd(-8,-175.5,-57.5,0.3)}
+{pt3dadd(-7,-181.5,-57.5,0.3)}
+
+{dendrite[1] connect dendrite[5](0), 1}
+{access dendrite[5]}
+{pt3dclear()}
+{pt3dadd(14,-20,-62.5,2.2)}
+{pt3dadd(14,-32.5,-66,0.3)}
+{pt3dadd(16,-44,-66,0.3)}
+{pt3dadd(18,-58,-77.5,0.3)}
+{pt3dadd(19,-63,-87.5,0.3)}
+{pt3dadd(21,-67.5,-92,0.3)}
+{pt3dadd(23.5,-73,-95,0.3)}
+{pt3dadd(27,-79.5,-94,0.3)}
+{pt3dadd(28.5,-89,-100,0.3)}
+{pt3dadd(28.5,-93.5,-108.5,0.3)}
+{pt3dadd(27,-96,-114,0.3)}
+{pt3dadd(26.5,-101.5,-123,0.3)}
+{pt3dadd(29,-106.5,-119,0.3)}
+
+{dendrite[5] connect dendrite[6](0), 1}
+{access dendrite[6]}
+{pt3dclear()}
+{pt3dadd(29,-106.5,-119,0.3)}
+{pt3dadd(30,-112.5,-125.5,0.3)}
+{pt3dadd(31.5,-119.5,-132.5,0.3)}
+{pt3dadd(35,-131,-131.5,0.3)}
+{pt3dadd(36.5,-138.5,-142,0.3)}
+{pt3dadd(37.5,-147.5,-131.5,0.3)}
+{pt3dadd(39.5,-153.5,-128.5,0.3)}
+{pt3dadd(40.5,-162.5,-128.5,0.3)}
+{pt3dadd(39,-164.5,-130.5,0.3)}
+
+{dendrite[5] connect dendrite[7](0), 1}
+{access dendrite[7]}
+{pt3dclear()}
+{pt3dadd(29,-106.5,-119,0.3)}
+{pt3dadd(34.5,-122,-127.5,0.3)}
+{pt3dadd(38.5,-125,-126.5,0.3)}
+{pt3dadd(43.5,-130,-126.5,0.3)}
+{pt3dadd(51,-136.5,-127.5,0.3)}
+
+{dendrite[0] connect dendrite[8](0), 1}
+{access dendrite[8]}
+{pt3dclear()}
+{pt3dadd(14,-11.5,-61.5,4.2)}
+{pt3dadd(18.5,-12.5,-53.5,2.5)}
+{pt3dadd(26,-18.5,-56.5,1.8)}
+{pt3dadd(34,-23.5,-49,1.4)}
+{pt3dadd(37,-29,-45,1)}
+{pt3dadd(42,-35,-44,1)}
+
+{dendrite[8] connect dendrite[9](0), 1}
+{access dendrite[9]}
+{pt3dclear()}
+{pt3dadd(42,-35,-44,1)}
+{pt3dadd(47.5,-41.5,-59.5,0.7)}
+{pt3dadd(52.5,-45,-66,0.7)}
+{pt3dadd(60.5,-48.5,-65,0.7)}
+{pt3dadd(66.5,-52,-66,0.7)}
+{pt3dadd(76,-55.5,-66,0.5)}
+
+{dendrite[9] connect dendrite[10](0), 1}
+{access dendrite[10]}
+{pt3dclear()}
+{pt3dadd(76,-55.5,-66,0.5)}
+{pt3dadd(82,-62.5,-72,0.4)}
+{pt3dadd(85,-67,-77.5,0.3)}
+{pt3dadd(90,-72,-80.5,0.3)}
+{pt3dadd(92.5,-78,-80.5,0.3)}
+{pt3dadd(93,-82,-87.5,0.3)}
+{pt3dadd(97.5,-86.5,-90,0.3)}
+{pt3dadd(100,-94.5,-93,0.3)}
+{pt3dadd(100.5,-97.5,-97,0.3)}
+{pt3dadd(105,-105.5,-98,0.3)}
+{pt3dadd(105,-109,-102.5,0.3)}
+{pt3dadd(106.5,-117.5,-108.5,0.3)}
+{pt3dadd(108,-125,-114,0.3)}
+{pt3dadd(107.5,-126,-114,0.3)}
+
+{dendrite[9] connect dendrite[11](0), 1}
+{access dendrite[11]}
+{pt3dclear()}
+{pt3dadd(76,-55.5,-66,0.5)}
+{pt3dadd(82,-59,-62.5,0.4)}
+{pt3dadd(87,-62,-60.5,0.4)}
+{pt3dadd(92,-66.5,-66,0.4)}
+{pt3dadd(100.5,-73.5,-69,0.4)}
+{pt3dadd(106,-76.5,-66,0.4)}
+{pt3dadd(111,-83.5,-62.5,0.4)}
+{pt3dadd(114.5,-85.5,-61.5,0.4)}
+{pt3dadd(121,-86.5,-51,0.4)}
+{pt3dadd(132,-86.5,-51,0.4)}
+{pt3dadd(138,-88.5,-46,0.4)}
+{pt3dadd(143,-90.5,-46,0.3)}
+{pt3dadd(152.5,-92,-47,0.3)}
+
+{dendrite[8] connect dendrite[12](0), 1}
+{access dendrite[12]}
+{pt3dclear()}
+{pt3dadd(42,-35,-44,1)}
+{pt3dadd(46,-41.5,-41,0.5)}
+{pt3dadd(52.5,-46,-42,0.5)}
+{pt3dadd(57,-48.5,-41,0.5)}
+{pt3dadd(61,-54,-39.5,0.5)}
+{pt3dadd(65.5,-56,-39.5,0.5)}
+
+{dendrite[12] connect dendrite[13](0), 1}
+{access dendrite[13]}
+{pt3dclear()}
+{pt3dadd(65.5,-56,-39.5,0.5)}
+{pt3dadd(71,-63,-39.5,0.5)}
+{pt3dadd(76.5,-74,-39.5,0.5)}
+{pt3dadd(84,-86,-36.5,0.5)}
+{pt3dadd(90,-91.5,-36.5,0.5)}
+{pt3dadd(99,-100,-32.5,0.5)}
+{pt3dadd(101.5,-101,-29.5,0.5)}
+{pt3dadd(105,-106.5,-27,0.5)}
+{pt3dadd(110.5,-110,-21,0.5)}
+{pt3dadd(116,-111.5,-14.5,0.5)}
+{pt3dadd(121,-114.5,-11.5,0.5)}
+{pt3dadd(129.5,-122,-4.5,0.5)}
+{pt3dadd(134,-129,-2,0.5)}
+{pt3dadd(136,-136.5,0,0.5)}
+{pt3dadd(138.5,-144.5,-2,0.5)}
+{pt3dadd(140,-151.5,-3,0.5)}
+{pt3dadd(142.5,-158.5,-4.5,0.5)}
+{pt3dadd(143,-163.5,-5.5,0.5)}
+{pt3dadd(147,-169,0,0.5)}
+{pt3dadd(150,-176,-5.5,0.5)}
+{pt3dadd(155,-181.5,-3,0.3)}
+{pt3dadd(160.5,-185.5,-4.5,0.3)}
+
+{dendrite[12] connect dendrite[14](0), 1}
+{access dendrite[14]}
+{pt3dclear()}
+{pt3dadd(65.5,-56,-39.5,0.5)}
+{pt3dadd(71.5,-59,-31.5,0.4)}
+{pt3dadd(77,-67,-25,0.4)}
+{pt3dadd(82,-73,-22,0.4)}
+{pt3dadd(87.5,-75.5,-15.5,0.4)}
+{pt3dadd(89.5,-77.5,-14.5,0.4)}
+{pt3dadd(94.5,-78.5,-9.5,0.4)}
+{pt3dadd(99,-79,-4.5,0.4)}
+{pt3dadd(100.5,-82,-3,0.4)}
+{pt3dadd(104,-82.5,0,0.4)}
+{pt3dadd(108,-85.5,4.5,0.4)}
+{pt3dadd(113,-90,4.5,0.4)}
+{pt3dadd(117.5,-93,10,0.4)}
+{pt3dadd(121,-96.5,14,0.4)}
+{pt3dadd(124.5,-102,14,0.4)}
+{pt3dadd(125.5,-102,20.5,0.4)}
+{pt3dadd(128.5,-101.5,26.5,0.4)}
+{pt3dadd(134,-103,27.5,0.4)}
+{pt3dadd(141,-107.5,30.5,0.4)}
+{pt3dadd(146.5,-110.5,38,0.4)}
+{pt3dadd(151.5,-112,38,0.3)}
+{pt3dadd(151,-113.5,39,0.3)}
+{pt3dadd(153.5,-113.5,39,0.3)}
+
+{soma[0] connect dendrite[15](0), 1}
+{access dendrite[15]}
+{pt3dclear()}
+{pt3dadd(4.062,14.938,-50.958,16.705)}
+{pt3dadd(-1,-0.5,-44,3.5)}
+{pt3dadd(-2.5,-3.5,-44,2.9)}
+{pt3dadd(-5,-7.5,-42,2.9)}
+{pt3dadd(-7.5,-11,-44,2.9)}
+
+{dendrite[15] connect dendrite[16](0), 1}
+{access dendrite[16]}
+{pt3dclear()}
+{pt3dadd(-7.5,-11,-44,2.9)}
+{pt3dadd(-10,-11.5,-43,1)}
+{pt3dadd(-14.5,-12,-38.5,0.8)}
+{pt3dadd(-17.5,-15,-38.5,0.8)}
+{pt3dadd(-21,-17,-39.5,0.8)}
+{pt3dadd(-23,-19,-39.5,0.8)}
+{pt3dadd(-23.5,-24,-41,0.8)}
+{pt3dadd(-25,-26.5,-41,0.8)}
+{pt3dadd(-29,-29,-34.5,0.8)}
+{pt3dadd(-31.5,-32.5,-42,0.8)}
+{pt3dadd(-35,-34.5,-42,0.8)}
+
+{dendrite[16] connect dendrite[17](0), 1}
+{access dendrite[17]}
+{pt3dclear()}
+{pt3dadd(-35,-34.5,-42,0.8)}
+{pt3dadd(-40,-37.5,-38.5,0.5)}
+{pt3dadd(-45,-40.5,-36.5,0.5)}
+{pt3dadd(-46,-42,-35.5,0.5)}
+{pt3dadd(-50,-45.5,-35.5,0.5)}
+{pt3dadd(-54,-51.5,-34.5,0.5)}
+{pt3dadd(-58.5,-58,-36.5,0.5)}
+{pt3dadd(-61,-61.5,-34.5,0.5)}
+{pt3dadd(-63.5,-67.5,-35.5,0.5)}
+{pt3dadd(-66,-70,-32.5,0.5)}
+{pt3dadd(-67.5,-74,-32.5,0.5)}
+{pt3dadd(-71,-76.5,-31.5,0.5)}
+
+{dendrite[17] connect dendrite[18](0), 1}
+{access dendrite[18]}
+{pt3dclear()}
+{pt3dadd(-71,-76.5,-31.5,0.5)}
+{pt3dadd(-76,-80,-28.5,0.4)}
+{pt3dadd(-81.5,-84,-29.5,0.4)}
+{pt3dadd(-87,-88.5,-24,0.4)}
+{pt3dadd(-90,-91,-20,0.4)}
+{pt3dadd(-94.5,-95,-21,0.4)}
+{pt3dadd(-96,-98.5,-20,0.4)}
+{pt3dadd(-99.5,-100,-20,0.4)}
+{pt3dadd(-101,-104,-17,0.4)}
+{pt3dadd(-104,-106.5,-13.5,0.4)}
+{pt3dadd(-105.5,-109,-11.5,0.4)}
+{pt3dadd(-110,-113,-10.5,0.4)}
+{pt3dadd(-113,-114.5,-5.5,0.3)}
+{pt3dadd(-114.5,-117.5,-9.5,0.3)}
+{pt3dadd(-115,-118.5,-4.5,0.3)}
+
+{dendrite[17] connect dendrite[19](0), 1}
+{access dendrite[19]}
+{pt3dclear()}
+{pt3dadd(-71,-76.5,-31.5,0.5)}
+{pt3dadd(-71,-80.5,-32.5,0.4)}
+{pt3dadd(-73.5,-84,-32.5,0.4)}
+{pt3dadd(-77,-88,-32.5,0.4)}
+{pt3dadd(-78.5,-91.5,-32.5,0.4)}
+{pt3dadd(-82,-94,-32.5,0.4)}
+{pt3dadd(-85,-100,-32.5,0.4)}
+{pt3dadd(-86,-103,-27,0.4)}
+{pt3dadd(-89,-108,-28.5,0.4)}
+{pt3dadd(-91.5,-113.5,-27,0.4)}
+{pt3dadd(-96.5,-119,-27,0.4)}
+{pt3dadd(-102,-126,-27,0.4)}
+{pt3dadd(-105,-132.5,-26,0.4)}
+{pt3dadd(-108,-136.5,-27,0.4)}
+{pt3dadd(-109,-139,-26,0.3)}
+{pt3dadd(-111.5,-142.5,-26,0.3)}
+{pt3dadd(-113.5,-146.5,-25,0.3)}
+{pt3dadd(-114,-149.5,-22,0.3)}
+{pt3dadd(-114,-153,-21,0.3)}
+
+{dendrite[16] connect dendrite[20](0), 1}
+{access dendrite[20]}
+{pt3dclear()}
+{pt3dadd(-35,-34.5,-42,0.8)}
+{pt3dadd(-37,-39,-42,0.6)}
+{pt3dadd(-41.5,-42.5,-41,0.6)}
+{pt3dadd(-43,-45.5,-38.5,0.6)}
+
+{dendrite[20] connect dendrite[21](0), 1}
+{access dendrite[21]}
+{pt3dclear()}
+{pt3dadd(-43,-45.5,-38.5,0.6)}
+{pt3dadd(-48,-48.5,-43,0.6)}
+{pt3dadd(-49,-50,-45,0.6)}
+{pt3dadd(-50,-52,-45,0.6)}
+
+{dendrite[21] connect dendrite[22](0), 1}
+{access dendrite[22]}
+{pt3dclear()}
+{pt3dadd(-50,-52,-45,0.6)}
+{pt3dadd(-53,-54,-45,0.4)}
+{pt3dadd(-55.5,-57,-43,0.4)}
+{pt3dadd(-57,-58.5,-46,0.4)}
+{pt3dadd(-62,-62.5,-50,0.4)}
+{pt3dadd(-65,-67.5,-53.5,0.4)}
+{pt3dadd(-67,-73,-58.5,0.4)}
+{pt3dadd(-70,-78,-60.5,0.4)}
+{pt3dadd(-78,-88,-56.5,0.4)}
+{pt3dadd(-83.5,-98.5,-61.5,0.4)}
+{pt3dadd(-88,-106,-61.5,0.4)}
+{pt3dadd(-94.5,-119.5,-63.5,0.4)}
+{pt3dadd(-99,-125.5,-63.5,0.4)}
+{pt3dadd(-104,-133,-65,0.4)}
+{pt3dadd(-106.5,-136,-72,0.4)}
+{pt3dadd(-109,-141,-77.5,0.4)}
+{pt3dadd(-114.5,-147,-77.5,0.4)}
+{pt3dadd(-116,-152,-72,0.4)}
+{pt3dadd(-120,-155.5,-72,0.3)}
+{pt3dadd(-126.5,-162,-76,0.3)}
+{pt3dadd(-128.5,-165,-78.5,0.3)}
+
+{dendrite[21] connect dendrite[23](0), 1}
+{access dendrite[23]}
+{pt3dclear()}
+{pt3dadd(-50,-52,-45,0.6)}
+{pt3dadd(-54.5,-59,-42,0.4)}
+{pt3dadd(-57.5,-64.5,-37.5,0.4)}
+{pt3dadd(-59.5,-71,-36.5,0.4)}
+{pt3dadd(-61,-75.5,-36.5,0.4)}
+{pt3dadd(-61.5,-79.5,-33.5,0.4)}
+{pt3dadd(-63.5,-86.5,-32.5,0.4)}
+{pt3dadd(-68,-97.5,-30.5,0.4)}
+{pt3dadd(-72.5,-106.5,-31.5,0.4)}
+{pt3dadd(-74.5,-115,-26,0.4)}
+{pt3dadd(-76,-121,-23,0.4)}
+{pt3dadd(-76.5,-127,-24,0.4)}
+{pt3dadd(-76,-130,-24,0.4)}
+{pt3dadd(-80,-133,-20,0.4)}
+{pt3dadd(-81.5,-137,-18,0.4)}
+{pt3dadd(-84,-141.5,-17,0.4)}
+{pt3dadd(-86,-145,-13.5,0.4)}
+{pt3dadd(-87.5,-150,-15.5,0.4)}
+{pt3dadd(-89,-152.5,-19,0.4)}
+{pt3dadd(-91,-156.5,-18,0.3)}
+
+{dendrite[20] connect dendrite[24](0), 1}
+{access dendrite[24]}
+{pt3dclear()}
+{pt3dadd(-43,-45.5,-38.5,0.6)}
+{pt3dadd(-45.5,-49.5,-39.5,0.4)}
+{pt3dadd(-45,-54,-42,0.4)}
+{pt3dadd(-48,-61,-36.5,0.4)}
+{pt3dadd(-52.5,-71,-34.5,0.4)}
+{pt3dadd(-54,-79.5,-32.5,0.4)}
+{pt3dadd(-56.5,-84,-28.5,0.4)}
+{pt3dadd(-57,-93,-33.5,0.4)}
+{pt3dadd(-61.5,-100.5,-31.5,0.4)}
+{pt3dadd(-65,-109,-26,0.4)}
+{pt3dadd(-70.5,-116,-24,0.4)}
+{pt3dadd(-73,-121.5,-23,0.4)}
+{pt3dadd(-76.5,-127.5,-22,0.4)}
+{pt3dadd(-80,-134,-22,0.4)}
+{pt3dadd(-86,-140,-22,0.4)}
+{pt3dadd(-89,-145,-22,0.3)}
+{pt3dadd(-89.5,-149.5,-27,0.3)}
+{pt3dadd(-92.5,-155.5,-27,0.3)}
+{pt3dadd(-96,-158.5,-28.5,0.3)}
+
+{dendrite[15] connect dendrite[25](0), 1}
+{access dendrite[25]}
+{pt3dclear()}
+{pt3dadd(-7.5,-11,-44,2.9)}
+{pt3dadd(-5.5,-13.5,-37.5,1.8)}
+{pt3dadd(-7,-17,-32.5,1.8)}
+
+{dendrite[25] connect dendrite[26](0), 1}
+{access dendrite[26]}
+{pt3dclear()}
+{pt3dadd(-7,-17,-32.5,1.8)}
+{pt3dadd(-10.5,-17.5,-26,1.8)}
+{pt3dadd(-8.5,-20,-25,1.8)}
+
+{dendrite[26] connect dendrite[27](0), 1}
+{access dendrite[27]}
+{pt3dclear()}
+{pt3dadd(-8.5,-20,-25,1.8)}
+{pt3dadd(-11.5,-21.5,-20,1.1)}
+{pt3dadd(-13,-23.5,-22,0.9)}
+{pt3dadd(-12.5,-25,-15.5,0.8)}
+{pt3dadd(-15,-24.5,-11.5,0.8)}
+{pt3dadd(-17,-26,-7.5,0.8)}
+{pt3dadd(-18.5,-28.5,-7.5,0.8)}
+{pt3dadd(-21.5,-29,0.5,0.8)}
+{pt3dadd(-20,-31,1.5,0.8)}
+{pt3dadd(-20,-34.5,5.5,0.8)}
+{pt3dadd(-23,-34.5,7.5,0.8)}
+{pt3dadd(-23.5,-37,12,0.8)}
+{pt3dadd(-25,-39,13,0.8)}
+
+{dendrite[27] connect dendrite[28](0), 1}
+{access dendrite[28]}
+{pt3dclear()}
+{pt3dadd(-25,-39,13,0.8)}
+{pt3dadd(-27.5,-39.5,6.5,0.5)}
+{pt3dadd(-32.5,-45.5,9,0.5)}
+{pt3dadd(-36,-51,14,0.5)}
+{pt3dadd(-40.5,-58,11,0.5)}
+{pt3dadd(-43,-60,12,0.5)}
+{pt3dadd(-47,-64,16,0.5)}
+{pt3dadd(-50.5,-68,17,0.5)}
+{pt3dadd(-52,-73.5,18,0.4)}
+{pt3dadd(-57.5,-78.5,17,0.4)}
+{pt3dadd(-58,-83,16,0.4)}
+{pt3dadd(-60,-85.5,21.5,0.4)}
+{pt3dadd(-62,-89.5,21.5,0.4)}
+{pt3dadd(-65.5,-94.5,22.5,0.4)}
+{pt3dadd(-70,-99.5,25.5,0.4)}
+{pt3dadd(-72,-107.5,30.5,0.4)}
+{pt3dadd(-74.5,-111,30.5,0.4)}
+{pt3dadd(-76,-119,30.5,0.4)}
+{pt3dadd(-77.5,-122.5,31.5,0.4)}
+{pt3dadd(-78,-133,31.5,0.4)}
+{pt3dadd(-78,-138.5,25.5,0.4)}
+{pt3dadd(-77.5,-143,23.5,0.4)}
+{pt3dadd(-77,-147,28.5,0.4)}
+{pt3dadd(-77.5,-148.5,24.5,0.4)}
+
+{dendrite[27] connect dendrite[29](0), 1}
+{access dendrite[29]}
+{pt3dclear()}
+{pt3dadd(-25,-39,13,0.8)}
+{pt3dadd(-29,-45,19,0.5)}
+{pt3dadd(-29,-47.5,20.5,0.5)}
+
+{dendrite[29] connect dendrite[30](0), 1}
+{access dendrite[30]}
+{pt3dclear()}
+{pt3dadd(-29,-47.5,20.5,0.5)}
+{pt3dadd(-33,-51.5,25.5,0.4)}
+{pt3dadd(-35,-56.5,23.5,0.4)}
+{pt3dadd(-36.5,-60.5,23.5,0.4)}
+{pt3dadd(-38.5,-62,21.5,0.4)}
+{pt3dadd(-40.5,-65.5,20.5,0.4)}
+{pt3dadd(-40,-71,26.5,0.4)}
+{pt3dadd(-41.5,-76.5,29.5,0.4)}
+{pt3dadd(-44,-82,30.5,0.4)}
+{pt3dadd(-44,-89,35,0.4)}
+{pt3dadd(-45.5,-95,36,0.4)}
+{pt3dadd(-45.5,-101.5,41,0.4)}
+{pt3dadd(-48.5,-107,37,0.4)}
+{pt3dadd(-47.5,-112,36,0.4)}
+{pt3dadd(-53,-115.5,36,0.4)}
+
+{dendrite[29] connect dendrite[31](0), 1}
+{access dendrite[31]}
+{pt3dclear()}
+{pt3dadd(-29,-47.5,20.5,0.5)}
+{pt3dadd(-31.5,-53.5,28.5,0.4)}
+{pt3dadd(-34,-58,35,0.4)}
+{pt3dadd(-34.5,-60,40,0.4)}
+{pt3dadd(-36,-67,40,0.4)}
+{pt3dadd(-37,-70,44.5,0.4)}
+{pt3dadd(-39.5,-71,40,0.4)}
+{pt3dadd(-44,-70.5,41,0.4)}
+
+{dendrite[26] connect dendrite[32](0), 1}
+{access dendrite[32]}
+{pt3dclear()}
+{pt3dadd(-8.5,-20,-25,1.8)}
+{pt3dadd(-8,-24.5,-26,0.7)}
+{pt3dadd(-10.5,-25.5,-23,0.7)}
+{pt3dadd(-12,-29,-14.5,0.7)}
+{pt3dadd(-11.5,-29.5,-10.5,1)}
+
+{dendrite[32] connect dendrite[33](0), 1}
+{access dendrite[33]}
+{pt3dclear()}
+{pt3dadd(-11.5,-29.5,-10.5,1)}
+{pt3dadd(-12,-31.5,-13.5,0.8)}
+{pt3dadd(-14,-31.5,-8.5,0.7)}
+{pt3dadd(-14,-34,-2,0.7)}
+{pt3dadd(-16,-35,0.5,0.7)}
+{pt3dadd(-14,-38,1.5,0.5)}
+{pt3dadd(-15,-39.5,7.5,0.5)}
+{pt3dadd(-15.5,-43,11,0.5)}
+{pt3dadd(-14,-48,14,0.5)}
+{pt3dadd(-15.5,-50.5,19,0.5)}
+{pt3dadd(-15,-52.5,21.5,0.5)}
+{pt3dadd(-16,-55.5,20.5,0.5)}
+{pt3dadd(-14.5,-59,19,0.5)}
+{pt3dadd(-16,-61.5,21.5,0.5)}
+{pt3dadd(-15.5,-64.5,22.5,0.5)}
+{pt3dadd(-17,-66.5,24.5,0.5)}
+{pt3dadd(-15.5,-70.5,27.5,0.5)}
+{pt3dadd(-17,-73,27.5,0.5)}
+{pt3dadd(-18.5,-76,27.5,0.5)}
+{pt3dadd(-16.5,-79.5,30.5,0.5)}
+{pt3dadd(-17.5,-83,35,0.5)}
+{pt3dadd(-17,-88,38,0.5)}
+{pt3dadd(-16.5,-93.5,41,0.5)}
+{pt3dadd(-16,-95.5,43,0.3)}
+{pt3dadd(-15.5,-103,37,0.3)}
+{pt3dadd(-13.5,-105.5,40,0.3)}
+{pt3dadd(-13.5,-105.5,39,0.3)}
+
+{dendrite[32] connect dendrite[34](0), 1}
+{access dendrite[34]}
+{pt3dclear()}
+{pt3dadd(-11.5,-29.5,-10.5,1)}
+{pt3dadd(-9,-32,-8.5,1)}
+{pt3dadd(-11.5,-37.5,-9.5,0.8)}
+{pt3dadd(-7,-42.5,-6.5,0.7)}
+{pt3dadd(-5.5,-46,0,0.7)}
+{pt3dadd(-4.5,-49.5,1.5,0.7)}
+{pt3dadd(-5,-53,4.5,0.7)}
+{pt3dadd(-5,-60.5,4.5,0.7)}
+{pt3dadd(-4.5,-65,4.5,0.7)}
+
+{dendrite[34] connect dendrite[35](0), 1}
+{access dendrite[35]}
+{pt3dclear()}
+{pt3dadd(-4.5,-65,4.5,0.7)}
+{pt3dadd(-5.5,-69.5,5.5,0.6)}
+{pt3dadd(-5.5,-77,4.5,0.6)}
+{pt3dadd(-6.5,-81.5,11,0.5)}
+{pt3dadd(-7,-88,9,0.5)}
+{pt3dadd(-7.5,-93,7.5,0.5)}
+{pt3dadd(-6,-101.5,15,0.5)}
+{pt3dadd(-6,-108,18,0.5)}
+{pt3dadd(-8.5,-114,19,0.5)}
+{pt3dadd(-8.5,-120,19,0.5)}
+{pt3dadd(-8.5,-128,21.5,0.5)}
+{pt3dadd(-8.5,-134.5,18,0.5)}
+{pt3dadd(-9,-142,21.5,0.5)}
+{pt3dadd(-7,-148,22.5,0.4)}
+{pt3dadd(-5.5,-153,25.5,0.4)}
+{pt3dadd(-4.5,-157,25.5,0.4)}
+{pt3dadd(-3.5,-161,25.5,0.3)}
+{pt3dadd(-2.5,-166.5,24.5,0.3)}
+{pt3dadd(-3.5,-171,22.5,0.3)}
+{pt3dadd(-2,-175,23.5,0.3)}
+
+{dendrite[34] connect dendrite[36](0), 1}
+{access dendrite[36]}
+{pt3dclear()}
+{pt3dadd(-4.5,-65,4.5,0.7)}
+{pt3dadd(-4,-68,13,0.4)}
+{pt3dadd(-1.5,-73.5,16,0.4)}
+{pt3dadd(-1,-75.5,23.5,0.4)}
+{pt3dadd(1,-77,20.5,0.4)}
+{pt3dadd(4,-79,25.5,0.4)}
+{pt3dadd(7.5,-84.5,31.5,0.4)}
+{pt3dadd(12.5,-89.5,38,0.4)}
+{pt3dadd(14,-92.5,39,0.4)}
+{pt3dadd(15,-97.5,40,0.4)}
+
+{dendrite[25] connect dendrite[37](0), 1}
+{access dendrite[37]}
+{pt3dclear()}
+{pt3dadd(-7,-17,-32.5,1.8)}
+{pt3dadd(-4.5,-21.5,-25,0.8)}
+{pt3dadd(-4.5,-27.5,-29.5,0.8)}
+{pt3dadd(-3.5,-29,-22,0.8)}
+{pt3dadd(-1.5,-29.5,-17,0.8)}
+{pt3dadd(-2,-32,-14.5,0.8)}
+{pt3dadd(-3.5,-33,-11.5,0.8)}
+{pt3dadd(-1.5,-36.5,-9.5,0.7)}
+{pt3dadd(-1.5,-42,-6.5,0.7)}
+{pt3dadd(0,-44.5,-1,0.7)}
+{pt3dadd(1,-44,-2,0.7)}
+
+{dendrite[37] connect dendrite[38](0), 1}
+{access dendrite[38]}
+{pt3dclear()}
+{pt3dadd(1,-44,-2,0.7)}
+{pt3dadd(1,-47.5,-2,0.4)}
+{pt3dadd(2.5,-51,0.5,0.4)}
+{pt3dadd(-0.5,-55,4.5,0.4)}
+{pt3dadd(-1.5,-59,10,0.4)}
+{pt3dadd(-1,-60,12,0.4)}
+{pt3dadd(-0.5,-63.5,16,0.4)}
+{pt3dadd(-1,-69,19,0.4)}
+{pt3dadd(-0.5,-72,23.5,0.4)}
+{pt3dadd(-2,-76.5,23.5,0.4)}
+{pt3dadd(-1,-80,26.5,0.4)}
+{pt3dadd(-1,-86,27.5,0.4)}
+{pt3dadd(-2.5,-91,27.5,0.4)}
+{pt3dadd(-2,-96.5,27.5,0.4)}
+{pt3dadd(-2.5,-101,29.5,0.4)}
+{pt3dadd(-1.5,-106.5,34,0.4)}
+{pt3dadd(-1,-108.5,39,0.4)}
+{pt3dadd(-2.5,-113.5,41,0.4)}
+{pt3dadd(0.5,-116.5,42,0.4)}
+{pt3dadd(2,-122,40,0.4)}
+{pt3dadd(-1,-123.5,43,0.4)}
+{pt3dadd(-1,-122.5,43,0.4)}
+
+{dendrite[37] connect dendrite[39](0), 1}
+{access dendrite[39]}
+{pt3dclear()}
+{pt3dadd(1,-44,-2,0.7)}
+{pt3dadd(3.5,-47,-2,0.6)}
+{pt3dadd(5,-52.5,2.5,0.6)}
+{pt3dadd(4,-56,6.5,0.6)}
+{pt3dadd(5,-60.5,10,0.6)}
+{pt3dadd(4.5,-65.5,12,0.6)}
+{pt3dadd(7,-68,16,0.6)}
+{pt3dadd(7,-73,18,0.6)}
+{pt3dadd(7.5,-78,22.5,0.6)}
+{pt3dadd(7.5,-85.5,20.5,0.6)}
+{pt3dadd(6.5,-90.5,22.5,0.6)}
+{pt3dadd(6,-97,24.5,0.6)}
+{pt3dadd(7.5,-101.5,28.5,0.6)}
+{pt3dadd(6.5,-102,28.5,0.5)}
+
+{dendrite[39] connect dendrite[40](0), 1}
+{access dendrite[40]}
+{pt3dclear()}
+{pt3dadd(6.5,-102,28.5,0.5)}
+{pt3dadd(6.5,-107,27.5,0.5)}
+{pt3dadd(6.5,-112,28.5,0.5)}
+{pt3dadd(7,-116.5,28.5,0.5)}
+{pt3dadd(8.5,-121.5,31.5,0.5)}
+{pt3dadd(6.5,-124.5,31.5,0.5)}
+{pt3dadd(6.5,-129,31.5,0.5)}
+{pt3dadd(6,-134,34,0.5)}
+{pt3dadd(6.5,-142.5,27.5,0.5)}
+{pt3dadd(7.5,-148.5,27.5,0.5)}
+{pt3dadd(8.5,-155,29.5,0.5)}
+{pt3dadd(9.5,-160,30.5,0.5)}
+{pt3dadd(9,-167.5,27.5,0.3)}
+
+{dendrite[39] connect dendrite[41](0), 1}
+{access dendrite[41]}
+{pt3dclear()}
+{pt3dadd(6.5,-102,28.5,0.5)}
+{pt3dadd(8,-108,34,0.3)}
+{pt3dadd(9,-117,35,0.3)}
+{pt3dadd(8.5,-120,39,0.3)}
+{pt3dadd(12,-127.5,41,0.3)}
+{pt3dadd(11.5,-134,40,0.3)}
+{pt3dadd(11.5,-134,41,0.3)}
+
+{soma[0] connect dendrite[42](0), 1}
+{access dendrite[42]}
+{pt3dclear()}
+{pt3dadd(4.062,14.938,-50.958,16.705)}
+{pt3dadd(1,-0.5,-56.5,1.2)}
+{pt3dadd(-0.5,-9.5,-53.5,1.2)}
+{pt3dadd(-1,-13.5,-52,2.4)}
+{pt3dadd(-1.5,-16,-59.5,2.4)}
+{pt3dadd(-2.5,-17.5,-58.5,2.4)}
+
+{dendrite[42] connect dendrite[43](0), 1}
+{access dendrite[43]}
+{pt3dclear()}
+{pt3dadd(-2.5,-17.5,-58.5,2.4)}
+{pt3dadd(-5,-19,-53.5,1.1)}
+{pt3dadd(-8,-23.5,-53.5,1.1)}
+{pt3dadd(-10.5,-27.5,-48,1.1)}
+{pt3dadd(-13,-30,-48,1.1)}
+{pt3dadd(-14.5,-30,-48,1.1)}
+{pt3dadd(-16,-30,-48,1.1)}
+
+{dendrite[43] connect dendrite[44](0), 1}
+{access dendrite[44]}
+{pt3dclear()}
+{pt3dadd(-16,-30,-48,1.1)}
+{pt3dadd(-18.5,-32,-48,0.7)}
+{pt3dadd(-22.5,-35,-49,0.7)}
+{pt3dadd(-26.5,-37,-47,0.7)}
+{pt3dadd(-28,-40.5,-45,0.7)}
+{pt3dadd(-28,-40.5,-44,0.7)}
+
+{dendrite[44] connect dendrite[45](0), 1}
+{access dendrite[45]}
+{pt3dclear()}
+{pt3dadd(-28,-40.5,-44,0.7)}
+{pt3dadd(-32.5,-43,-50,0.7)}
+{pt3dadd(-36.5,-48,-51,0.7)}
+{pt3dadd(-39,-51.5,-50,0.7)}
+{pt3dadd(-43.5,-54.5,-56.5,0.7)}
+{pt3dadd(-48.5,-59.5,-58.5,0.5)}
+{pt3dadd(-52.5,-68,-58.5,0.5)}
+{pt3dadd(-57,-74,-58.5,0.5)}
+{pt3dadd(-60.5,-83,-58.5,0.5)}
+{pt3dadd(-65,-92,-59.5,0.5)}
+{pt3dadd(-68.5,-98,-58.5,0.5)}
+{pt3dadd(-71.5,-103,-58.5,0.5)}
+{pt3dadd(-74.5,-108.5,-58.5,0.5)}
+{pt3dadd(-78,-111,-58.5,0.5)}
+{pt3dadd(-81,-114.5,-62.5,0.5)}
+{pt3dadd(-85.5,-119.5,-62.5,0.5)}
+{pt3dadd(-92.5,-128,-62.5,0.5)}
+{pt3dadd(-96,-133.5,-57.5,0.5)}
+{pt3dadd(-102,-138,-59.5,0.5)}
+{pt3dadd(-107,-143.5,-58.5,0.5)}
+{pt3dadd(-111.5,-146.5,-59.5,0.5)}
+{pt3dadd(-114,-151.5,-59.5,0.5)}
+{pt3dadd(-119.5,-159.5,-59.5,0.3)}
+{pt3dadd(-123.5,-163,-59.5,0.3)}
+{pt3dadd(-128.5,-166,-59.5,0.3)}
+
+{dendrite[44] connect dendrite[46](0), 1}
+{access dendrite[46]}
+{pt3dclear()}
+{pt3dadd(-28,-40.5,-44,0.7)}
+{pt3dadd(-32.5,-46,-47,0.5)}
+{pt3dadd(-32.5,-48.5,-45,0.5)}
+{pt3dadd(-34.5,-52.5,-44,0.5)}
+{pt3dadd(-34.5,-55,-39.5,0.5)}
+{pt3dadd(-37,-58.5,-37.5,0.5)}
+{pt3dadd(-38.5,-64.5,-35.5,0.5)}
+{pt3dadd(-39.5,-67.5,-32.5,0.5)}
+
+{dendrite[46] connect dendrite[47](0), 1}
+{access dendrite[47]}
+{pt3dclear()}
+{pt3dadd(-39.5,-67.5,-32.5,0.5)}
+{pt3dadd(-44,-73,-29.5,0.4)}
+{pt3dadd(-46.5,-77.5,-30.5,0.4)}
+{pt3dadd(-50,-84,-27,0.4)}
+{pt3dadd(-52.5,-87.5,-28.5,0.4)}
+{pt3dadd(-56,-91,-21,0.4)}
+{pt3dadd(-62,-99,-20,0.4)}
+{pt3dadd(-65,-105.5,-18,0.4)}
+{pt3dadd(-67,-114,-12.5,0.4)}
+{pt3dadd(-66,-120.5,-13.5,0.4)}
+{pt3dadd(-64,-125.5,-11.5,0.4)}
+
+{dendrite[46] connect dendrite[48](0), 1}
+{access dendrite[48]}
+{pt3dclear()}
+{pt3dadd(-39.5,-67.5,-32.5,0.5)}
+{pt3dadd(-40.5,-75,-33.5,0.4)}
+{pt3dadd(-42.5,-80,-33.5,0.4)}
+{pt3dadd(-43,-91.5,-27,0.4)}
+{pt3dadd(-44.5,-97.5,-25,0.4)}
+{pt3dadd(-46,-107.5,-22,0.4)}
+{pt3dadd(-49,-115.5,-19,0.4)}
+{pt3dadd(-50,-124,-15.5,0.4)}
+{pt3dadd(-54.5,-135,-15.5,0.4)}
+{pt3dadd(-58.5,-143,-17,0.3)}
+{pt3dadd(-63,-151.5,-18,0.3)}
+{pt3dadd(-63.5,-158,-18,0.3)}
+{pt3dadd(-67,-161,-17,0.3)}
+{pt3dadd(-69,-164.5,-15.5,0.3)}
+
+{dendrite[43] connect dendrite[49](0), 1}
+{access dendrite[49]}
+{pt3dclear()}
+{pt3dadd(-16,-30,-48,1.1)}
+{pt3dadd(-18,-35.5,-38.5,0.5)}
+
+{dendrite[49] connect dendrite[50](0), 1}
+{access dendrite[50]}
+{pt3dclear()}
+{pt3dadd(-18,-35.5,-38.5,0.5)}
+{pt3dadd(-21,-40,-38.5,0.4)}
+{pt3dadd(-23,-44.5,-38.5,0.4)}
+{pt3dadd(-24,-48,-37.5,0.4)}
+{pt3dadd(-27,-51.5,-35.5,0.4)}
+{pt3dadd(-30,-57.5,-35.5,0.4)}
+{pt3dadd(-33,-63.5,-28.5,0.4)}
+{pt3dadd(-34,-69,-25,0.4)}
+{pt3dadd(-35.5,-73,-24,0.4)}
+
+{dendrite[50] connect dendrite[51](0), 1}
+{access dendrite[51]}
+{pt3dclear()}
+{pt3dadd(-35.5,-73,-24,0.4)}
+{pt3dadd(-36.5,-75.5,-22,0.4)}
+{pt3dadd(-41.5,-85,-18,0.4)}
+{pt3dadd(-44.5,-92,-12.5,0.4)}
+{pt3dadd(-50,-102,-8.5,0.4)}
+{pt3dadd(-53,-109.5,-5.5,0.4)}
+{pt3dadd(-56.5,-115,-2,0.4)}
+{pt3dadd(-61,-119.5,-2,0.4)}
+{pt3dadd(-62,-126,0.5,0.4)}
+{pt3dadd(-64,-131.5,5.5,0.4)}
+{pt3dadd(-68.5,-138.5,11,0.4)}
+{pt3dadd(-71.5,-144.5,11,0.4)}
+{pt3dadd(-74,-149.5,13,0.4)}
+{pt3dadd(-76.5,-155,15,0.4)}
+{pt3dadd(-75.5,-164,20.5,0.3)}
+{pt3dadd(-75,-169.5,16,0.3)}
+
+{dendrite[50] connect dendrite[52](0), 1}
+{access dendrite[52]}
+{pt3dclear()}
+{pt3dadd(-35.5,-73,-24,0.4)}
+{pt3dadd(-37,-82.5,-26,0.4)}
+{pt3dadd(-40.5,-88,-26,0.4)}
+{pt3dadd(-44,-96,-21,0.4)}
+{pt3dadd(-48,-102,-20,0.4)}
+{pt3dadd(-52,-111.5,-19,0.4)}
+{pt3dadd(-55.5,-118,-19,0.4)}
+{pt3dadd(-60,-126.5,-19,0.4)}
+{pt3dadd(-61.5,-131.5,-19,0.4)}
+{pt3dadd(-63,-140.5,-20,0.4)}
+{pt3dadd(-66,-149.5,-21,0.4)}
+{pt3dadd(-67,-155.5,-20,0.4)}
+{pt3dadd(-68,-162.5,-21,0.4)}
+{pt3dadd(-69,-169,-21,0.4)}
+{pt3dadd(-71,-174,-14.5,0.3)}
+
+{dendrite[49] connect dendrite[53](0), 1}
+{access dendrite[53]}
+{pt3dclear()}
+{pt3dadd(-18,-35.5,-38.5,0.5)}
+{pt3dadd(-22,-46.5,-38.5,0.4)}
+{pt3dadd(-26,-53,-38.5,0.4)}
+{pt3dadd(-27,-57,-43,0.4)}
+{pt3dadd(-26.5,-62.5,-44,0.4)}
+{pt3dadd(-29.5,-75.5,-43,0.4)}
+{pt3dadd(-30.5,-83,-43,0.4)}
+{pt3dadd(-31,-91.5,-42,0.4)}
+{pt3dadd(-32,-101,-42,0.4)}
+{pt3dadd(-34,-110,-44,0.4)}
+{pt3dadd(-34.5,-116.5,-47,0.4)}
+{pt3dadd(-34,-119.5,-48,0.4)}
+
+{dendrite[53] connect dendrite[54](0), 1}
+{access dendrite[54]}
+{pt3dclear()}
+{pt3dadd(-34,-119.5,-48,0.4)}
+{pt3dadd(-37,-131.5,-46,0.4)}
+{pt3dadd(-39.5,-139,-46,0.4)}
+{pt3dadd(-39.5,-144,-46,0.4)}
+{pt3dadd(-38.5,-147.5,-45,0.3)}
+{pt3dadd(-41,-155.5,-45,0.3)}
+{pt3dadd(-39.5,-163.5,-46,0.3)}
+{pt3dadd(-41,-172.5,-50,0.3)}
+{pt3dadd(-44.5,-180.5,-51,0.3)}
+
+{dendrite[53] connect dendrite[55](0), 1}
+{access dendrite[55]}
+{pt3dclear()}
+{pt3dadd(-34,-119.5,-48,0.4)}
+{pt3dadd(-33,-128,-38.5,0.3)}
+{pt3dadd(-34,-137.5,-38.5,0.3)}
+{pt3dadd(-35.5,-142.5,-35.5,0.3)}
+{pt3dadd(-36,-148.5,-31.5,0.3)}
+{pt3dadd(-36,-157.5,-32.5,0.3)}
+{pt3dadd(-35,-163.5,-28.5,0.3)}
+{pt3dadd(-38,-167.5,-26,0.3)}
+{pt3dadd(-40,-172.5,-27,0.3)}
+
+{dendrite[42] connect dendrite[56](0), 1}
+{access dendrite[56]}
+{pt3dclear()}
+{pt3dadd(-2.5,-17.5,-58.5,2.4)}
+{pt3dadd(-2,-20.5,-57.5,0.7)}
+{pt3dadd(-2,-24,-61.5,0.7)}
+{pt3dadd(-2.5,-25.5,-61.5,0.7)}
+
+{dendrite[56] connect dendrite[57](0), 1}
+{access dendrite[57]}
+{pt3dclear()}
+{pt3dadd(-2.5,-25.5,-61.5,0.7)}
+{pt3dadd(-3,-30,-60.5,0.7)}
+{pt3dadd(-5.5,-34.5,-62.5,0.7)}
+
+{dendrite[57] connect dendrite[58](0), 1}
+{access dendrite[58]}
+{pt3dclear()}
+{pt3dadd(-5.5,-34.5,-62.5,0.7)}
+{pt3dadd(-7,-36.5,-69,0.5)}
+{pt3dadd(-8.5,-42,-72,0.5)}
+{pt3dadd(-11,-47.5,-72,0.5)}
+{pt3dadd(-15,-49.5,-75,0.5)}
+{pt3dadd(-17,-56.5,-74,0.5)}
+{pt3dadd(-17.5,-60,-74,0.5)}
+{pt3dadd(-22,-68,-74,0.5)}
+{pt3dadd(-27,-80.5,-74,0.5)}
+{pt3dadd(-30.5,-86.5,-76,0.5)}
+{pt3dadd(-34,-94.5,-77.5,0.5)}
+{pt3dadd(-37.5,-101.5,-78.5,0.4)}
+{pt3dadd(-38,-106.5,-78.5,0.4)}
+{pt3dadd(-42,-113,-78.5,0.4)}
+{pt3dadd(-47,-118,-78.5,0.4)}
+{pt3dadd(-51.5,-129,-83.5,0.4)}
+{pt3dadd(-52.5,-137,-83.5,0.4)}
+{pt3dadd(-54.5,-141.5,-83.5,0.4)}
+{pt3dadd(-57,-146,-84.5,0.4)}
+{pt3dadd(-59,-154.5,-84.5,0.4)}
+{pt3dadd(-60,-161,-85.5,0.4)}
+{pt3dadd(-59.5,-166.5,-89,0.4)}
+{pt3dadd(-61.5,-173.5,-87.5,0.4)}
+{pt3dadd(-64,-179,-90,0.4)}
+{pt3dadd(-69,-183,-92,0.4)}
+
+{dendrite[57] connect dendrite[59](0), 1}
+{access dendrite[59]}
+{pt3dclear()}
+{pt3dadd(-5.5,-34.5,-62.5,0.7)}
+{pt3dadd(-6.5,-38.5,-58.5,0.5)}
+{pt3dadd(-8,-41.5,-58.5,0.5)}
+{pt3dadd(-13.5,-51.5,-58.5,0.5)}
+{pt3dadd(-15.5,-56.5,-58.5,0.5)}
+{pt3dadd(-17.5,-60,-58.5,0.5)}
+{pt3dadd(-19,-65.5,-58.5,0.5)}
+
+{dendrite[59] connect dendrite[60](0), 1}
+{access dendrite[60]}
+{pt3dclear()}
+{pt3dadd(-19,-65.5,-58.5,0.5)}
+{pt3dadd(-21,-71.5,-59.5,0.4)}
+{pt3dadd(-21.5,-76,-54.5,0.4)}
+{pt3dadd(-24.5,-88,-54.5,0.4)}
+{pt3dadd(-25,-98,-50,0.4)}
+{pt3dadd(-26,-107.5,-50,0.4)}
+{pt3dadd(-27,-115,-50,0.4)}
+{pt3dadd(-26.5,-121.5,-50,0.4)}
+{pt3dadd(-27,-128.5,-47,0.4)}
+{pt3dadd(-28.5,-138.5,-51,0.4)}
+{pt3dadd(-30,-147.5,-50,0.4)}
+{pt3dadd(-32,-155,-50,0.4)}
+{pt3dadd(-33.5,-161,-50,0.4)}
+{pt3dadd(-35.5,-165.5,-47,0.4)}
+{pt3dadd(-35.5,-171,-48,0.3)}
+{pt3dadd(-37,-175,-48,0.3)}
+
+{dendrite[59] connect dendrite[61](0), 1}
+{access dendrite[61]}
+{pt3dclear()}
+{pt3dadd(-19,-65.5,-58.5,0.5)}
+{pt3dadd(-17,-72.5,-62.5,0.4)}
+{pt3dadd(-15.5,-78,-59.5,0.4)}
+{pt3dadd(-16,-81.5,-58.5,0.4)}
+{pt3dadd(-13.5,-89.5,-57.5,0.4)}
+{pt3dadd(-13,-96.5,-57.5,0.4)}
+{pt3dadd(-14,-100.5,-57.5,0.4)}
+{pt3dadd(-14,-107.5,-57.5,0.4)}
+{pt3dadd(-14.5,-115.5,-57.5,0.4)}
+{pt3dadd(-14,-122.5,-57.5,0.4)}
+{pt3dadd(-14,-128.5,-57.5,0.4)}
+{pt3dadd(-13,-135,-57.5,0.4)}
+{pt3dadd(-13.5,-142,-57.5,0.4)}
+{pt3dadd(-13,-147.5,-57.5,0.4)}
+{pt3dadd(-14,-156,-56.5,0.4)}
+{pt3dadd(-12,-160.5,-50,0.4)}
+{pt3dadd(-10,-165,-47,0.4)}
+{pt3dadd(-9.5,-168,-45,0.3)}
+{pt3dadd(-9,-172.5,-45,0.3)}
+
+{dendrite[56] connect dendrite[62](0), 1}
+{access dendrite[62]}
+{pt3dclear()}
+{pt3dadd(-2.5,-25.5,-61.5,0.7)}
+{pt3dadd(0.5,-31,-72,0.5)}
+{pt3dadd(-1,-34.5,-68,0.5)}
+{pt3dadd(-6.5,-38,-81.5,0.5)}
+{pt3dadd(-10.5,-42,-80.5,0.5)}
+{pt3dadd(-12,-48,-79.5,0.5)}
+{pt3dadd(-11,-54,-83.5,0.5)}
+{pt3dadd(-12.5,-57,-86.5,0.5)}
+{pt3dadd(-15,-66.5,-91,0.5)}
+{pt3dadd(-18.5,-73.5,-95,0.5)}
+{pt3dadd(-21.5,-84.5,-97,0.5)}
+{pt3dadd(-24.5,-90,-95,0.5)}
+{pt3dadd(-26,-98,-97,0.5)}
+{pt3dadd(-31,-103,-102.5,0.5)}
+{pt3dadd(-34,-111.5,-109.5,0.5)}
+{pt3dadd(-36,-120.5,-110.5,0.5)}
+{pt3dadd(-40.5,-130.5,-109.5,0.5)}
+{pt3dadd(-43,-136,-110.5,0.5)}
+{pt3dadd(-45,-143.5,-115,0.5)}
+{pt3dadd(-49.5,-151.5,-116,0.5)}
+{pt3dadd(-52.5,-157,-120,0.5)}
+{pt3dadd(-53,-161,-120,0.3)}
+{pt3dadd(-54.5,-165,-122,0.3)}
+{pt3dadd(-58,-172,-127.5,0.3)}
+{pt3dadd(-61,-177.5,-128.5,0.3)}
+{pt3dadd(-63,-182.5,-129.5,0.3)}
+{pt3dadd(-69,-187,-132.5,0.3)}
+{pt3dadd(-72.5,-194.5,-134.5,0.3)}
